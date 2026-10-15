@@ -98,8 +98,8 @@ flowchart TD
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/shagun12mehta-maker/study-companion.git
-cd study-companion
+git clone https://github.com/mustafa64-stack/track-d-py.git
+cd track-d-py
 
 # 2. Set up virtual environment
 python3 -m venv venv
@@ -117,8 +117,7 @@ Open `http://localhost:8501` in your browser.
 
 ---
 
-## 👥 Authors & Team
-- **Shagun Mehta** ([shagun12mehta-maker](https://github.com/shagun12mehta-maker))
+## 👤 Author
 - **Mustafa** ([mustafa64-stack](https://github.com/mustafa64-stack))
 
 *Track D: Personalized Tutoring & Adaptive Learning — Multimodal AI Hackathon 2026*
