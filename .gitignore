@@ -19,6 +19,9 @@ venv/
 env/
 ENV/
 
+# Learner session data
+learner_data/
+
 # Large binaries (keep original large pdfs out if desired, or track them if needed)
 opticsbook.pdf
 

@@ -219,7 +219,20 @@ Grounded Explanation:"""
         )
         answer = response.text.strip()
     except Exception as err:
-        answer = f"Error generating answer: {err}"
+        try:
+            fallback_model = "gemini-flash-lite-latest" if GEMINI_FLASH_MODEL == "gemini-flash-latest" else "gemini-flash-latest"
+            response = client.models.generate_content(
+                model=fallback_model,
+                contents=prompt
+            )
+            answer = response.text.strip()
+        except Exception as fallback_err:
+            answer = f"Error generating answer: {fallback_err}"
+            return answer, [], matches
+
+    # If tutor refused because the topic is not covered, clear citations
+    if "cannot answer this" in answer.lower():
+        citations = []
 
     return answer, citations, matches
 

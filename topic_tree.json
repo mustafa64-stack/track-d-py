@@ -1,0 +1,1987 @@
+{
+  "course_name": "Physics of Light and Optics",
+  "chunks_processed": 48,
+  "topics": [
+    {
+      "topic_id": "vector_multiplication",
+      "name": "Vector Multiplication",
+      "description": "Fundamental operations for multiplying vectors in optics, including dot products yielding scalars and cross products yielding perpendicular vectors.",
+      "subtopics": [
+        "Dot Product",
+        "Cross Product",
+        "Right-Hand Rule"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "dot_product",
+          "name": "Dot Product",
+          "description": "Multiplication of two vectors yielding a scalar equal to the product of their magnitudes and the cosine of the angle between them.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p10",
+              "page": 10
+            }
+          ]
+        },
+        {
+          "concept_id": "cross_product",
+          "name": "Cross Product",
+          "description": "Multiplication of two vectors yielding a third vector perpendicular to both, with magnitude proportional to the sine of the enclosed angle and direction determined by the right-hand rule.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p10",
+              "page": 10
+            },
+            {
+              "chunk_id": "pdf_001_p11",
+              "page": 11
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p10",
+          "page": 10
+        },
+        {
+          "chunk_id": "pdf_001_p11",
+          "page": 11
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "multidimensional_derivatives",
+      "name": "Multidimensional Derivatives",
+      "description": "First-order vector differential operators in Cartesian and curvilinear coordinates, specifically the gradient, divergence, and curl.",
+      "subtopics": [
+        "Gradient",
+        "Divergence",
+        "Curl",
+        "Cylindrical Coordinates Transformation"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "gradient",
+          "name": "Gradient",
+          "description": "A vector derivative of a scalar function representing the direction and rate of fastest spatial change.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p11",
+              "page": 11
+            },
+            {
+              "chunk_id": "pdf_001_p12",
+              "page": 12
+            }
+          ]
+        },
+        {
+          "concept_id": "divergence",
+          "name": "Divergence",
+          "description": "A scalar differential operator applied to a vector function, representing the net outward flux per unit volume.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p11",
+              "page": 11
+            }
+          ]
+        },
+        {
+          "concept_id": "curl",
+          "name": "Curl",
+          "description": "A vector differential operator describing the infinitesimal rotation or circulation of a vector field.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p11",
+              "page": 11
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p11",
+          "page": 11
+        },
+        {
+          "chunk_id": "pdf_001_p12",
+          "page": 12
+        }
+      ],
+      "prerequisites": [
+        "vector_multiplication"
+      ]
+    },
+    {
+      "topic_id": "laplacian_operator",
+      "name": "Laplacian Operator",
+      "description": "A second-order differential operator defined as the divergence of a gradient, applicable to both scalar and vector fields.",
+      "subtopics": [
+        "Scalar Laplacian",
+        "Vector Laplacian",
+        "Curvilinear Laplacian",
+        "Vector Derivative Identity"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "scalar_laplacian",
+          "name": "Scalar Laplacian",
+          "description": "The divergence of the gradient of a scalar function, reducing in Cartesian coordinates to the sum of the second partial derivatives.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p12",
+              "page": 12
+            }
+          ]
+        },
+        {
+          "concept_id": "vector_laplacian",
+          "name": "Vector Laplacian",
+          "description": "A second-order derivative acting on vector fields, given coordinate-independently by the relation ∇²E = ∇(∇·E) - ∇×(∇×E).",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p12",
+              "page": 12
+            },
+            {
+              "chunk_id": "pdf_001_p13",
+              "page": 13
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p12",
+          "page": 12
+        },
+        {
+          "chunk_id": "pdf_001_p13",
+          "page": 13
+        }
+      ],
+      "prerequisites": [
+        "multidimensional_derivatives"
+      ]
+    },
+    {
+      "topic_id": "vector_integral_theorems",
+      "name": "Vector Integral Theorems",
+      "description": "Fundamental integral theorems relating volume, surface, and line integrals of vector fields in physical contexts.",
+      "subtopics": [
+        "Divergence Theorem",
+        "Stokes' Theorem",
+        "Gauss' Law Context",
+        "Ampere's and Faraday's Law Context"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "divergence_theorem",
+          "name": "Divergence Theorem",
+          "description": "An integral identity stating that the surface integral of a vector field over a closed boundary equals the volume integral of its divergence.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p13",
+              "page": 13
+            },
+            {
+              "chunk_id": "pdf_001_p14",
+              "page": 14
+            }
+          ]
+        },
+        {
+          "concept_id": "stokes_theorem",
+          "name": "Stokes' Theorem",
+          "description": "An integral identity relating the flux of the curl of a vector field across an open surface to the line integral of the field along the bounding curve.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p14",
+              "page": 14
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p13",
+          "page": 13
+        },
+        {
+          "chunk_id": "pdf_001_p14",
+          "page": 14
+        }
+      ],
+      "prerequisites": [
+        "multidimensional_derivatives"
+      ]
+    },
+    {
+      "topic_id": "complex_numbers_and_euler_formula",
+      "name": "Complex Numbers and Euler's Formula",
+      "description": "Complex-number representations of sinusoidal wave phenomena and trigonometric identities used to simplify optical calculations.",
+      "subtopics": [
+        "Euler's Formula",
+        "Trigonometric Identities via Complex Notation",
+        "Superposition Representation"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "eulers_formula",
+          "name": "Euler's Formula",
+          "description": "The mathematical relationship connecting complex exponentials to trigonometric functions: e^(iφ) = cos φ + i sin φ.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p15",
+              "page": 15
+            },
+            {
+              "chunk_id": "pdf_001_p16",
+              "page": 16
+            }
+          ]
+        },
+        {
+          "concept_id": "trigonometric_identities_via_complex_exponentials",
+          "name": "Trigonometric Identities via Complex Exponentials",
+          "description": "Derivation and verification of angle addition and Pythagorean identities using complex exponential representations of sine and cosine.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p15",
+              "page": 15
+            },
+            {
+              "chunk_id": "pdf_001_p16",
+              "page": 16
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p14",
+          "page": 14
+        },
+        {
+          "chunk_id": "pdf_001_p15",
+          "page": 15
+        },
+        {
+          "chunk_id": "pdf_001_p16",
+          "page": 16
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "complex_number_fundamentals",
+      "name": "Complex Number Fundamentals and Geometry",
+      "description": "Cartesian and polar representations of complex numbers in the complex plane, quadrant corrections, complex conjugates, and the physical interpretation of complex angles in optics.",
+      "subtopics": [
+        "Cartesian and polar forms",
+        "Quadrant adjustment for polar conversion",
+        "Complex conjugates and absolute value",
+        "Complex angles and evanescent waves"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "polar_representation",
+          "name": "Polar Representation and Quadrant Adjustment",
+          "description": "Geometric conversion of a complex number a + ib to polar form rho * exp(i*phi), requiring an adjustment of phi by pi when the real part a is negative.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p18",
+              "page": 18
+            }
+          ]
+        },
+        {
+          "concept_id": "complex_conjugate_and_magnitude",
+          "name": "Complex Conjugate and Magnitude",
+          "description": "Negating the imaginary component to obtain z* = a - ib, used to calculate the magnitude |z| = sqrt(z*z) and extract the real part via (z + z*)/2.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p18",
+              "page": 18
+            },
+            {
+              "chunk_id": "pdf_001_p19",
+              "page": 19
+            }
+          ]
+        },
+        {
+          "concept_id": "complex_angles_in_optics",
+          "name": "Complex Angles in Wave Optics",
+          "description": "Complex angles and wavevectors that describe exponential growth, absorption, or evanescent waves when light undergoes total internal reflection beyond the critical angle.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p19",
+              "page": 19
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p18",
+          "page": 18
+        },
+        {
+          "chunk_id": "pdf_001_p19",
+          "page": 19
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "complex_wave_representation",
+      "name": "Complex Wave Representation",
+      "description": "Representation of real sinusoidal waveforms using complex exponentials, enabling linear mathematical operations prior to extracting the real part.",
+      "subtopics": [
+        "Complex representation of cosine waves",
+        "Linear operations on complex fields",
+        "Real part extraction"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "complex_notation_for_cosine_waves",
+          "name": "Complex Notation for Cosine Waves",
+          "description": "Expressing A*cos(alpha + beta) as the real part of A_tilde * exp(i*alpha), where phase is embedded in the complex amplitude factor.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p17",
+              "page": 17
+            }
+          ]
+        },
+        {
+          "concept_id": "linear_operations_on_real_parts",
+          "name": "Linear Operations on Complex Representations",
+          "description": "Performing linear operations such as addition, differentiation, and integration on the full complex function and deferring real-part extraction to the end.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p17",
+              "page": 17
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p17",
+          "page": 17
+        },
+        {
+          "chunk_id": "pdf_001_p19",
+          "page": 19
+        }
+      ],
+      "prerequisites": [
+        "complex_number_fundamentals"
+      ]
+    },
+    {
+      "topic_id": "linear_algebra_for_optical_systems",
+      "name": "Linear Algebra for Optical Systems",
+      "description": "Formulation and solution of systems of linear equations using 2x2 matrices, matrix multiplication, inversion, and determinants.",
+      "subtopics": [
+        "Matrix representation of linear equations",
+        "Matrix multiplication",
+        "Identity matrix and matrix inversion",
+        "Determinants of 2x2 matrices"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "matrix_form_linear_equations",
+          "name": "Matrix Representation of Linear Equations",
+          "description": "Encoding two simultaneous linear equations with two unknowns into a 2x2 matrix multiplying a 2D column vector.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p19",
+              "page": 19
+            }
+          ]
+        },
+        {
+          "concept_id": "matrix_inverse_and_determinant",
+          "name": "2x2 Matrix Inverse and Determinant",
+          "description": "Computing the inverse of a 2x2 matrix via its determinant AD - BC to solve for unknown vector elements.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p20",
+              "page": 20
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p19",
+          "page": 19
+        },
+        {
+          "chunk_id": "pdf_001_p20",
+          "page": 20
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "sylvesters_theorem",
+      "name": "Sylvester's Theorem",
+      "description": "Method for calculating powers of a 2x2 matrix with unit determinant, applied to periodic optical multilayer coatings and ray reflections in laser cavities.",
+      "subtopics": [
+        "Unimodular 2x2 matrices",
+        "Sylvester's theorem formula",
+        "Inductive proof of Sylvester's theorem"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "sylvesters_theorem_formulation",
+          "name": "Sylvester's Theorem Formulation",
+          "description": "Evaluating an N-th matrix power for a 2x2 matrix with AD - BC = 1 using trigonometric terms involving theta, where cos(theta) = (A + D)/2.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p20",
+              "page": 20
+            },
+            {
+              "chunk_id": "pdf_001_p21",
+              "page": 21
+            }
+          ]
+        },
+        {
+          "concept_id": "proof_by_induction_sylvester",
+          "name": "Inductive Proof of Sylvester's Theorem",
+          "description": "Proving that Sylvester's theorem holds for N+1 given that it holds for N, applying the condition AD - BC = 1.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p21",
+              "page": 21
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p20",
+          "page": 20
+        },
+        {
+          "chunk_id": "pdf_001_p21",
+          "page": 21
+        }
+      ],
+      "prerequisites": [
+        "linear_algebra_for_optical_systems"
+      ]
+    },
+    {
+      "topic_id": "fourier_series_and_analysis",
+      "name": "Fourier Series and Analysis",
+      "description": "Decomposition of complex optical fields into superpositions of harmonic sinusoidal waves and expansion of periodic functions into Fourier series.",
+      "subtopics": [
+        "Fourier decomposition of optical fields",
+        "Fourier series of periodic functions",
+        "Trigonometric basis functions"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "optical_fourier_decomposition",
+          "name": "Fourier Decomposition in Optics",
+          "description": "Decomposing complex light fields into sinusoidal waves that travel independently through frequency-dependent optical media.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p21",
+              "page": 21
+            },
+            {
+              "chunk_id": "pdf_001_p22",
+              "page": 22
+            }
+          ]
+        },
+        {
+          "concept_id": "fourier_series_expansion",
+          "name": "Fourier Series Expansion",
+          "description": "Representing a periodic function of period 2pi/Delta_omega as an infinite summation of sine and cosine terms or complex exponentials.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p22",
+              "page": 22
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p21",
+          "page": 21
+        },
+        {
+          "chunk_id": "pdf_001_p22",
+          "page": 22
+        }
+      ],
+      "prerequisites": [
+        "complex_wave_representation"
+      ]
+    },
+    {
+      "topic_id": "fourier_integral_and_continuous_transform",
+      "name": "Fourier Integral and Continuous Transform",
+      "description": "Determination of Fourier expansion coefficients via integration and extending the Fourier series to nonperiodic functions in the infinite period limit.",
+      "subtopics": [
+        "Fourier coefficient extraction",
+        "Orthogonality and sinc-function selection",
+        "Continuous limit for nonperiodic waveforms"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "fourier_coefficient_integration",
+          "name": "Fourier Coefficient Calculation",
+          "description": "Determining coefficients c_m by integrating the product of f(t) and exp(i*m*Delta_omega*t) over the fundamental period, leveraging orthogonality.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p23",
+              "page": 23
+            }
+          ]
+        },
+        {
+          "concept_id": "continuous_fourier_limit",
+          "name": "Continuous Fourier Limit for Nonperiodic Waveforms",
+          "description": "Extending the period to infinity by taking the limit Delta_omega -> 0, allowing nonperiodic waveforms such as short laser pulses to be represented.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p23",
+              "page": 23
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p23",
+          "page": 23
+        }
+      ],
+      "prerequisites": [
+        "fourier_series_and_analysis"
+      ]
+    },
+    {
+      "topic_id": "fourier_integral_and_transforms",
+      "name": "Fourier Integral and Transforms",
+      "description": "Formulation of the Fourier integral theorem from calculus summations, defining forward and inverse Fourier transform pairs connecting time and frequency domains.",
+      "subtopics": [
+        "Transition from summation to integral",
+        "Fourier integral theorem",
+        "Fourier transform pairs",
+        "Frequency domain representation"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "fourier_integral_theorem",
+          "name": "Fourier Integral Theorem",
+          "description": "The representation of an arbitrary function as a continuous limit of a summation over finely spaced frequency steps.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p24",
+              "page": 24
+            }
+          ]
+        },
+        {
+          "concept_id": "fourier_transform_pair",
+          "name": "Fourier Transform and Inverse Transform",
+          "description": "The dual integral transformations converting a time-dependent function into a frequency-dependent function and vice versa, noting convention choices in exponential signs and factors of 2pi.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p24",
+              "page": 24
+            },
+            {
+              "chunk_id": "pdf_001_p25",
+              "page": 25
+            }
+          ]
+        },
+        {
+          "concept_id": "gaussian_fourier_transform",
+          "name": "Gaussian Wavepacket Transformation",
+          "description": "Calculation demonstrating how a Gaussian envelope carrier wave transforms between temporal and spectral domains and recovers its original form.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p25",
+              "page": 25
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p24",
+          "page": 24
+        },
+        {
+          "chunk_id": "pdf_001_p25",
+          "page": 25
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "dirac_delta_function_and_parsevals_theorem",
+      "name": "Dirac Delta Function and Parseval's Theorem",
+      "description": "Mathematical formulation of the Dirac delta function as an integral operator and frequency superposition, and its application in proving Parseval's theorem.",
+      "subtopics": [
+        "Dirac delta function definition",
+        "Superposition of frequency components",
+        "Parseval's theorem",
+        "Three-dimensional delta function"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "dirac_delta_function",
+          "name": "Dirac Delta Function",
+          "description": "An idealized function that is zero everywhere except where its argument is zero, which samples the value of another function within an integral and can be represented as a uniform superposition of frequencies.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p25",
+              "page": 25
+            },
+            {
+              "chunk_id": "pdf_001_p26",
+              "page": 26
+            }
+          ]
+        },
+        {
+          "concept_id": "parsevals_theorem",
+          "name": "Parseval's Theorem",
+          "description": "Theorem equating the integral of the squared magnitude of a function in the time domain to that of its Fourier transform in the frequency domain.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p26",
+              "page": 26
+            }
+          ]
+        },
+        {
+          "concept_id": "three_dimensional_delta_function",
+          "name": "Three-Dimensional Delta Function",
+          "description": "Spatial generalization of the delta function arising from the divergence of the inverse-square vector field (r - r') / |r - r'|^3.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p29",
+              "page": 29
+            },
+            {
+              "chunk_id": "pdf_001_p30",
+              "page": 30
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p25",
+          "page": 25
+        },
+        {
+          "chunk_id": "pdf_001_p26",
+          "page": 26
+        },
+        {
+          "chunk_id": "pdf_001_p29",
+          "page": 29
+        },
+        {
+          "chunk_id": "pdf_001_p30",
+          "page": 30
+        }
+      ],
+      "prerequisites": [
+        "fourier_integral_and_transforms"
+      ]
+    },
+    {
+      "topic_id": "mathematical_integrals_and_series",
+      "name": "Mathematical Integrals and Series for Optics",
+      "description": "Analytical reference formulas for Gaussian integrals, Bessel function integrals, sinc integrals, and geometric series frequently used in optical calculations.",
+      "subtopics": [
+        "Exponential and Gaussian integrals",
+        "Bessel function integrals",
+        "Sinc function integrals",
+        "Geometric series summation formulas"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "standard_definite_integrals",
+          "name": "Standard Optics Integrals",
+          "description": "Definite integrals involving Gaussian profiles, Bessel functions (J0 and J1), and sinc-squared functions used in diffraction and wave calculations.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p27",
+              "page": 27
+            }
+          ]
+        },
+        {
+          "concept_id": "geometric_series",
+          "name": "Geometric Series Formulas",
+          "description": "Finite and infinite series summation formulas for powers of a common ratio r.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p27",
+              "page": 27
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p27",
+          "page": 27
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "vector_calculus_tools_and_theorems",
+      "name": "Vector Calculus Tools and Integral Theorems",
+      "description": "Vector algebraic operations, differential identities, coordinate system transformations, and integral theorems applied in electromagnetism and optics.",
+      "subtopics": [
+        "Vector algebraic identities",
+        "Vector differential identities",
+        "Cylindrical coordinate Laplacian",
+        "Divergence and Stokes' theorems"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "vector_identities",
+          "name": "Vector Algebraic and Differential Identities",
+          "description": "Properties including the BAC-CAB rule, orthogonality of cross products, curl of curl, and divergence of cross products.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p28",
+              "page": 28
+            }
+          ]
+        },
+        {
+          "concept_id": "cylindrical_laplacian",
+          "name": "Laplacian in Cylindrical Coordinates",
+          "description": "The differential form of the Laplacian operator expressed in terms of radial, azimuthal, and longitudinal coordinates.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p28",
+              "page": 28
+            },
+            {
+              "chunk_id": "pdf_001_p29",
+              "page": 29
+            }
+          ]
+        },
+        {
+          "concept_id": "vector_integral_theorems",
+          "name": "Stokes' and Divergence Theorems",
+          "description": "Theorems relating surface integrals to line integrals (Stokes') and volume integrals to closed surface flux integrals (divergence theorem).",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p29",
+              "page": 29
+            },
+            {
+              "chunk_id": "pdf_001_p30",
+              "page": 30
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p28",
+          "page": 28
+        },
+        {
+          "chunk_id": "pdf_001_p29",
+          "page": 29
+        },
+        {
+          "chunk_id": "pdf_001_p30",
+          "page": 30
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "complex_numbers_in_optics",
+      "name": "Complex Numbers in Optics",
+      "description": "Algebraic manipulation of complex numbers, Euler's formula representations, and methods for evaluating products of the real parts of complex wave fields.",
+      "subtopics": [
+        "Polar and rectangular forms",
+        "Euler's equation relations",
+        "Products of real parts of harmonic fields",
+        "Complex trigonometric arguments"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "complex_number_representations",
+          "name": "Complex Number Conversions and Identities",
+          "description": "Techniques for converting complex expressions between rectangular and polar forms and expressing trigonometric functions via Euler's formula.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p30",
+              "page": 30
+            }
+          ]
+        },
+        {
+          "concept_id": "product_of_real_parts",
+          "name": "Products of Real Parts of Complex Fields",
+          "description": "Identity for evaluating the product of the real parts of harmonic electric and magnetic fields, resolving into time-averaged and rapid-oscillation components.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p30",
+              "page": 30
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p30",
+          "page": 30
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "optics_course_scope_and_foundations",
+      "name": "Foundations and Scope of Optics",
+      "description": "Overview of topics covered in physics-based physical optics, including wave propagation, boundary effects, polarization, coherence, diffraction, and required mathematical preparation.",
+      "subtopics": [
+        "Curriculum scope of physical optics",
+        "Wave and quantum optics topics",
+        "Mathematical prerequisites"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "optics_core_topics",
+          "name": "Core Topics of Physical Optics",
+          "description": "The study of light in matter, reflection and transmission at interfaces, polarization, dispersion, coherence, imaging, diffraction, and the quantum nature of light.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p3",
+              "page": 3
+            }
+          ]
+        },
+        {
+          "concept_id": "mathematical_prerequisites",
+          "name": "Mathematical Preparation for Optics",
+          "description": "Prerequisite mastery of differentiation, integration, trigonometry, algebra, complex numbers, vector calculus, and Fourier transforms.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p3",
+              "page": 3
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p3",
+          "page": 3
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "fourier_theory_and_convolution",
+      "name": "Fourier Theory and Convolution",
+      "description": "Mathematical properties of the Fourier transform, including linearity, scaling, time shifts, and the convolution and autocorrelation theorems.",
+      "subtopics": [
+        "Fourier transform properties",
+        "Convolution theorem",
+        "Autocorrelation theorem"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "fourier_transform_properties",
+          "name": "Fourier Transform Operational Properties",
+          "description": "Basic properties of Fourier transforms including linear superposition, time scaling, and time shifts.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p31",
+              "page": 31
+            }
+          ]
+        },
+        {
+          "concept_id": "convolution_theorem",
+          "name": "Convolution Theorem",
+          "description": "Theorem stating that the Fourier transform of the convolution of two functions is proportional to the product of their individual Fourier transforms.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p31",
+              "page": 31
+            },
+            {
+              "chunk_id": "pdf_001_p32",
+              "page": 32
+            }
+          ]
+        },
+        {
+          "concept_id": "autocorrelation_theorem",
+          "name": "Autocorrelation Theorem",
+          "description": "Theorem stating that the Fourier transform of the autocorrelation of a function is proportional to the squared magnitude of its Fourier transform.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p32",
+              "page": 32
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p31",
+          "page": 31
+        },
+        {
+          "chunk_id": "pdf_001_p32",
+          "page": 32
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "maxwells_equations_overview",
+      "name": "Overview of Maxwell's Equations",
+      "description": "Introduction to the four fundamental equations of electricity and magnetism, uniting electromagnetic theory with light.",
+      "subtopics": [
+        "Maxwell's equations formulation",
+        "Electromagnetic nature of light"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "maxwells_equations_formulation",
+          "name": "Maxwell's Equations",
+          "description": "The concise set of four equations (Gauss' Law, Gauss' Law for magnetism, Faraday's Law, and Ampere's Law revised by Maxwell) forming a self-consistent electromagnetic theory.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p33",
+              "page": 33
+            }
+          ]
+        },
+        {
+          "concept_id": "electromagnetic_nature_of_light",
+          "name": "Electromagnetic Nature of Light",
+          "description": "The realization that light is an electromagnetic wave traveling at the speed of light, establishing Maxwell's equations as the foundation of optics.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p33",
+              "page": 33
+            },
+            {
+              "chunk_id": "pdf_001_p34",
+              "page": 34
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p33",
+          "page": 33
+        },
+        {
+          "chunk_id": "pdf_001_p34",
+          "page": 34
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "gauss_law_for_electric_fields",
+      "name": "Gauss' Law for Electric Fields",
+      "description": "Relationship between electric charge distributions and the resulting electric fields in differential and integral forms.",
+      "subtopics": [
+        "Coulomb's Law and continuous charge distributions",
+        "Differential form of Gauss's Law",
+        "Integral form of Gauss's Law"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "coulombs_law_continuous_charge",
+          "name": "Coulomb's Law for Continuous Charge Distributions",
+          "description": "The electric field produced by continuous distributions of charge throughout a volume.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p34",
+              "page": 34
+            }
+          ]
+        },
+        {
+          "concept_id": "gauss_law_differential",
+          "name": "Differential Form of Gauss's Law",
+          "description": "The divergence of the electric field equals the charge density divided by the permittivity of free space.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p34",
+              "page": 34
+            },
+            {
+              "chunk_id": "pdf_001_p35",
+              "page": 35
+            }
+          ]
+        },
+        {
+          "concept_id": "gauss_law_integral",
+          "name": "Integral Form of Gauss's Law",
+          "description": "The net flux of the electric field through a closed surface is proportional to the total enclosed charge.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p35",
+              "page": 35
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p34",
+          "page": 34
+        },
+        {
+          "chunk_id": "pdf_001_p35",
+          "page": 35
+        }
+      ],
+      "prerequisites": [
+        "maxwells_equations_overview"
+      ]
+    },
+    {
+      "topic_id": "gauss_law_for_magnetic_fields",
+      "name": "Gauss' Law for Magnetic Fields",
+      "description": "The formulation of magnetic fields generated by current distributions and the absence of magnetic monopoles.",
+      "subtopics": [
+        "Biot-Savart Law",
+        "Divergence-free magnetic fields"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "biot_savart_law",
+          "name": "Biot-Savart Law",
+          "description": "The law defining the magnetic field produced by a steady current density distributed throughout a volume.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p36",
+              "page": 36
+            }
+          ]
+        },
+        {
+          "concept_id": "gauss_law_magnetism_differential",
+          "name": "Gauss's Law for Magnetism",
+          "description": "Statement that the divergence of the magnetic field is identically zero, derived from the Biot-Savart law.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p36",
+              "page": 36
+            },
+            {
+              "chunk_id": "pdf_001_p37",
+              "page": 37
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p36",
+          "page": 36
+        },
+        {
+          "chunk_id": "pdf_001_p37",
+          "page": 37
+        }
+      ],
+      "prerequisites": [
+        "maxwells_equations_overview"
+      ]
+    },
+    {
+      "topic_id": "faradays_law_of_induction",
+      "name": "Faraday's Law of Induction",
+      "description": "The principle that time-varying magnetic fields induce circulating electric fields.",
+      "subtopics": [
+        "Electromagnetic induction",
+        "Integral and differential forms of Faraday's Law"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "electromagnetic_induction",
+          "name": "Electromagnetic Induction",
+          "description": "A changing magnetic flux through a surface bounded by a closed path induces an electric voltage around that path.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p37",
+              "page": 37
+            }
+          ]
+        },
+        {
+          "concept_id": "faradays_law_differential",
+          "name": "Differential Form of Faraday's Law",
+          "description": "The curl of the electric field is equal to the negative time rate of change of the magnetic field.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p33",
+              "page": 33
+            },
+            {
+              "chunk_id": "pdf_001_p38",
+              "page": 38
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p37",
+          "page": 37
+        },
+        {
+          "chunk_id": "pdf_001_p38",
+          "page": 38
+        }
+      ],
+      "prerequisites": [
+        "maxwells_equations_overview"
+      ]
+    },
+    {
+      "topic_id": "amperes_law",
+      "name": "Ampere's Law",
+      "description": "The relationship connecting magnetic field curl to electric current density, derived through the inversion of the Biot-Savart Law.",
+      "subtopics": [
+        "Inversion of Biot-Savart Law",
+        "Current density and magnetic field curl"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "inversion_of_biot_savart_law",
+          "name": "Inversion of the Biot-Savart Law",
+          "description": "Mathematical derivation taking the curl of the Biot-Savart integral to isolate the current density.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p38",
+              "page": 38
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p38",
+          "page": 38
+        }
+      ],
+      "prerequisites": [
+        "gauss_law_for_magnetic_fields"
+      ]
+    },
+    {
+      "topic_id": "maxwells_adjustment_to_amperes_law",
+      "name": "Maxwell's Adjustment to Ampere's Law",
+      "description": "Generalization of Ampere's law for non-steady-state situations by incorporating the continuity equation and displacement current.",
+      "subtopics": [
+        "Steady-state limitation of Ampere's law",
+        "Continuity equation for charge and current",
+        "Displacement current"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "steady_state_limitation_of_amperes_law",
+          "name": "Steady-State Limitation of Ampere's Law",
+          "description": "Uncorrected Ampere's law applies only when divergence of J is approximately zero, failing for time-dependent phenomena such as optics.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p39",
+              "page": 39
+            }
+          ]
+        },
+        {
+          "concept_id": "continuity_equation",
+          "name": "Continuity Equation",
+          "description": "A statement of charge conservation relating the divergence of current density to the rate of change of charge density (div J = -d rho / dt).",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p39",
+              "page": 39
+            },
+            {
+              "chunk_id": "pdf_001_p40",
+              "page": 40
+            }
+          ]
+        },
+        {
+          "concept_id": "displacement_current",
+          "name": "Displacement Current",
+          "description": "A time-varying electric field term added to Ampere's law that acts like a current in producing magnetic fields.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p41",
+              "page": 41
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p39",
+          "page": 39
+        },
+        {
+          "chunk_id": "pdf_001_p40",
+          "page": 40
+        },
+        {
+          "chunk_id": "pdf_001_p41",
+          "page": 41
+        },
+        {
+          "chunk_id": "pdf_001_p42",
+          "page": 42
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "polarization_of_materials",
+      "name": "Polarization of Materials",
+      "description": "Decomposition of charge and current densities in media and formulation of Maxwell's equations in terms of the polarization vector.",
+      "subtopics": [
+        "Current density decomposition",
+        "Polarization vector and polarization current",
+        "Bound charge density",
+        "Maxwell's equations in polarized media"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "current_density_decomposition",
+          "name": "Current Density Decomposition",
+          "description": "Partitioning of total current density into free currents, magnetic currents, and polarization currents.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p42",
+              "page": 42
+            }
+          ]
+        },
+        {
+          "concept_id": "polarization_vector_and_polarization_current",
+          "name": "Polarization Vector and Polarization Current",
+          "description": "The macroscopic dipole distribution P and the effective current J_p = dP/dt arising from time-varying bound charge movement.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p42",
+              "page": 42
+            }
+          ]
+        },
+        {
+          "concept_id": "bound_charge_density",
+          "name": "Bound Charge Density",
+          "description": "Local concentration of charge resulting from nonuniform arrangements of dipoles, defined as rho_p = -div P.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p43",
+              "page": 43
+            }
+          ]
+        },
+        {
+          "concept_id": "maxwells_equations_in_polarized_media",
+          "name": "Maxwell's Equations in Polarized Media",
+          "description": "Macroscopic Maxwell's equations expressed in electrically neutral, nonmagnetic media using polarization P.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p44",
+              "page": 44
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p42",
+          "page": 42
+        },
+        {
+          "chunk_id": "pdf_001_p43",
+          "page": 43
+        },
+        {
+          "chunk_id": "pdf_001_p44",
+          "page": 44
+        }
+      ],
+      "prerequisites": [
+        "maxwells_adjustment_to_amperes_law"
+      ]
+    },
+    {
+      "topic_id": "the_wave_equation",
+      "name": "The Wave Equation",
+      "description": "Derivation of the decoupled second-order differential wave equation from Maxwell's equations in media and vacuum.",
+      "subtopics": [
+        "Derivation of the electromagnetic wave equation",
+        "Source terms in material media",
+        "Wave propagation in vacuum and the speed of light"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "wave_equation_derivation",
+          "name": "Derivation of the Wave Equation",
+          "description": "Deriving decoupled second-order differential equations for electric and magnetic fields using the curl of Faraday's law and vector identities.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p44",
+              "page": 44
+            },
+            {
+              "chunk_id": "pdf_001_p45",
+              "page": 45
+            }
+          ]
+        },
+        {
+          "concept_id": "wave_equation_source_terms",
+          "name": "Source Terms in the Wave Equation",
+          "description": "Terms on the right-hand side of the material wave equation representing free current dynamics, dipole oscillations, and anisotropy.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p45",
+              "page": 45
+            }
+          ]
+        },
+        {
+          "concept_id": "vacuum_wave_equation_and_speed_of_light",
+          "name": "Vacuum Wave Equation and the Speed of Light",
+          "description": "Homogeneous wave equation in vacuum yielding shape-preserving propagating waveforms moving at c = 1 / sqrt(eps_0 mu_0).",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p46",
+              "page": 46
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p44",
+          "page": 44
+        },
+        {
+          "chunk_id": "pdf_001_p45",
+          "page": 45
+        },
+        {
+          "chunk_id": "pdf_001_p46",
+          "page": 46
+        }
+      ],
+      "prerequisites": [
+        "maxwells_adjustment_to_amperes_law",
+        "polarization_of_materials"
+      ]
+    },
+    {
+      "topic_id": "mathematical_tools",
+      "name": "Mathematical Tools",
+      "description": "Foundational mathematical tools for optics, including vector calculus, complex numbers, linear algebra, and Fourier theory.",
+      "subtopics": [
+        "Vector Calculus",
+        "Complex Numbers",
+        "Linear Algebra",
+        "Fourier Theory"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "vector_calculus_cartesian",
+          "name": "Vector Calculus in Cartesian Coordinates",
+          "description": "Representation of spatial position by Cartesian vectors using unit basis vectors, essential for electromagnetic equations.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p9",
+              "page": 9
+            }
+          ]
+        },
+        {
+          "concept_id": "fourier_theory",
+          "name": "Fourier Theory",
+          "description": "Mathematical framework of Fourier transforms applied to spectral and pulse analysis in optics.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p9",
+              "page": 9
+            },
+            {
+              "chunk_id": "pdf_001_p5",
+              "page": 5
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p5",
+          "page": 5
+        },
+        {
+          "chunk_id": "pdf_001_p9",
+          "page": 9
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "electromagnetic_phenomena",
+      "name": "Electromagnetic Phenomena",
+      "description": "Fundamental laws of electromagnetism including Gauss's, Faraday's, and Ampere's laws, Maxwell's equations, material polarization, and electromagnetic wave equations.",
+      "subtopics": [
+        "Gauss' Law",
+        "Faraday's Law",
+        "Ampere's Law and Maxwell's Adjustment",
+        "Polarization of Materials",
+        "The Wave Equation"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "maxwells_equations",
+          "name": "Maxwell's Equations",
+          "description": "Set of four fundamental equations describing electric and magnetic fields, charge, and current distributions.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p47",
+              "page": 47
+            },
+            {
+              "chunk_id": "pdf_001_p48",
+              "page": 48
+            }
+          ]
+        },
+        {
+          "concept_id": "electromagnetic_wave_equation",
+          "name": "Electromagnetic Wave Equation",
+          "description": "Wave equations derived from Maxwell's equations describing the propagation of electric and magnetic fields in vacuum at speed c = 1/sqrt(epsilon_0 * mu_0).",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p48",
+              "page": 48
+            }
+          ]
+        },
+        {
+          "concept_id": "speed_of_light_measurement",
+          "name": "Measurement of the Speed of Light",
+          "description": "Determination of light speed through experimental techniques, such as Roemer's observations of Jupiter's moon Io and rotating mirror methods.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p48",
+              "page": 48
+            },
+            {
+              "chunk_id": "pdf_001_p49",
+              "page": 49
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p5",
+          "page": 5
+        },
+        {
+          "chunk_id": "pdf_001_p47",
+          "page": 47
+        },
+        {
+          "chunk_id": "pdf_001_p48",
+          "page": 48
+        },
+        {
+          "chunk_id": "pdf_001_p49",
+          "page": 49
+        }
+      ],
+      "prerequisites": [
+        "mathematical_tools"
+      ]
+    },
+    {
+      "topic_id": "plane_waves_and_refractive_index",
+      "name": "Plane Waves and Refractive Index",
+      "description": "Plane wave solutions to the wave equation, complex representation, refractive index, dielectric models, and wave irradiance.",
+      "subtopics": [
+        "Plane Wave Solutions to the Wave Equation",
+        "Complex Plane Waves",
+        "Index of Refraction",
+        "The Lorentz Model of Dielectrics",
+        "Index of Refraction of a Conductor",
+        "Poynting's Theorem",
+        "Irradiance of a Plane Wave"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "plane_wave_solutions",
+          "name": "Plane Wave Solutions",
+          "description": "Solutions of the wave equation where wavefronts form planar surfaces propagating along a specified wave vector direction.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p48",
+              "page": 48
+            },
+            {
+              "chunk_id": "pdf_001_p5",
+              "page": 5
+            }
+          ]
+        },
+        {
+          "concept_id": "lorentz_model_of_dielectrics",
+          "name": "Lorentz Model of Dielectrics",
+          "description": "Physical model explaining the dispersion and frequency dependence of the refractive index in dielectric media.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p5",
+              "page": 5
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p5",
+          "page": 5
+        }
+      ],
+      "prerequisites": [
+        "mathematical_tools",
+        "electromagnetic_phenomena"
+      ]
+    },
+    {
+      "topic_id": "reflection_and_refraction",
+      "name": "Reflection and Refraction",
+      "description": "Behavior of electromagnetic waves at planar boundaries, Fresnel coefficients, reflectance, transmittance, polarization effects, and total internal reflection.",
+      "subtopics": [
+        "Refraction at an Interface",
+        "The Fresnel Coefficients",
+        "Reflectance and Transmittance",
+        "Brewster's Angle",
+        "Total Internal Reflection",
+        "Reflections from Metal"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "fresnel_coefficients",
+          "name": "Fresnel Coefficients",
+          "description": "Coefficients characterizing amplitude reflection and transmission for electromagnetic waves at an interface.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p6",
+              "page": 6
+            }
+          ]
+        },
+        {
+          "concept_id": "brewsters_angle",
+          "name": "Brewster's Angle",
+          "description": "The specific angle of incidence where reflected light is completely polarized perpendicular to the plane of incidence.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p6",
+              "page": 6
+            }
+          ]
+        },
+        {
+          "concept_id": "total_internal_reflection",
+          "name": "Total Internal Reflection",
+          "description": "Optical phenomenon occurring when light incident on a boundary at angles beyond the critical angle reflects completely.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p6",
+              "page": 6
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p6",
+          "page": 6
+        }
+      ],
+      "prerequisites": [
+        "plane_waves_and_refractive_index"
+      ]
+    },
+    {
+      "topic_id": "multiple_parallel_interfaces",
+      "name": "Multiple Parallel Interfaces",
+      "description": "Wave propagation through multiple planar boundaries, Fabry-Perot instruments, evanescent wave tunneling, and multilayer optical coatings.",
+      "subtopics": [
+        "Double-Interface Problem With Fresnel Coefficients",
+        "Tunneling of Evanescent Waves",
+        "Fabry-Perot Instrument",
+        "Multilayer Coatings",
+        "Periodic Multilayer Stacks"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "fabry_perot_instrument",
+          "name": "Fabry-Perot Instrument",
+          "description": "Optical resonator using multiple reflections between parallel surfaces to distinguish closely spaced wavelengths.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p6",
+              "page": 6
+            }
+          ]
+        },
+        {
+          "concept_id": "multilayer_coatings",
+          "name": "Multilayer Coatings",
+          "description": "Systems of multiple thin-film dielectric layers engineered to control transmission and reflection spectra.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p6",
+              "page": 6
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p6",
+          "page": 6
+        }
+      ],
+      "prerequisites": [
+        "mathematical_tools",
+        "reflection_and_refraction"
+      ]
+    },
+    {
+      "topic_id": "propagation_in_anisotropic_media",
+      "name": "Propagation in Anisotropic Media",
+      "description": "Constitutive relations and wave propagation in anisotropic crystals, including uniaxial and biaxial media.",
+      "subtopics": [
+        "Constitutive Relation in Crystals",
+        "Plane Wave Propagation in Crystals",
+        "Biaxial and Uniaxial Crystals",
+        "Refraction at a Uniaxial Crystal Surface",
+        "Poynting Vector in a Uniaxial Crystal"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "uniaxial_and_biaxial_crystals",
+          "name": "Uniaxial and Biaxial Crystals",
+          "description": "Anisotropic optical media characterized by direction-dependent indices of refraction.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p6",
+              "page": 6
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p6",
+          "page": 6
+        }
+      ],
+      "prerequisites": [
+        "plane_waves_and_refractive_index"
+      ]
+    },
+    {
+      "topic_id": "superposition_of_quasi_parallel_plane_waves",
+      "name": "Superposition of Quasi-Parallel Plane Waves",
+      "description": "Interference, frequency spectrum, group and phase velocity, wave packet propagation, and quadratic dispersion.",
+      "subtopics": [
+        "Intensity of Superimposed Plane Waves",
+        "Group vs. Phase Velocity",
+        "Frequency Spectrum of Light",
+        "Wave Packet Propagation and Group Delay",
+        "Quadratic Dispersion"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "group_vs_phase_velocity",
+          "name": "Group vs. Phase Velocity",
+          "description": "Distinction between the velocity of individual wave phase fronts and the propagation speed of the overall wave packet envelope.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p7",
+              "page": 7
+            }
+          ]
+        },
+        {
+          "concept_id": "quadratic_dispersion",
+          "name": "Quadratic Dispersion",
+          "description": "Frequency-dependent phase distortion causing broadening or chirping of optical wave packets.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p7",
+              "page": 7
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p7",
+          "page": 7
+        }
+      ],
+      "prerequisites": [
+        "mathematical_tools",
+        "plane_waves_and_refractive_index"
+      ]
+    },
+    {
+      "topic_id": "coherence_theory",
+      "name": "Coherence Theory",
+      "description": "Temporal and spatial coherence of light, interferometry, fringe visibility, and Fourier spectroscopy.",
+      "subtopics": [
+        "Michelson Interferometer",
+        "Coherence Time and Fringe Visibility",
+        "Temporal Coherence of Continuous Sources",
+        "Fourier Spectroscopy",
+        "Young's Two-Slit Setup and Spatial Coherence"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "michelson_interferometer",
+          "name": "Michelson Interferometer",
+          "description": "Two-beam interferometer used to measure optical path differences, coherence time, and spectral properties.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p7",
+              "page": 7
+            }
+          ]
+        },
+        {
+          "concept_id": "coherence_time_fringe_visibility",
+          "name": "Coherence Time and Fringe Visibility",
+          "description": "Measures of correlation in light fields determining the contrast of interference fringes over time or path delays.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p7",
+              "page": 7
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p7",
+          "page": 7
+        }
+      ],
+      "prerequisites": [
+        "superposition_of_quasi_parallel_plane_waves"
+      ]
+    },
+    {
+      "topic_id": "light_as_rays",
+      "name": "Light as Rays",
+      "description": "Geometrical optics approximations, the Eikonal equation, Fermat's principle, and ABCD matrix methods for paraxial optical systems.",
+      "subtopics": [
+        "The Eikonal Equation",
+        "Fermat's Principle",
+        "Paraxial Rays and ABCD Matrices",
+        "Reflection and Refraction at Curved Surfaces"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "fermats_principle",
+          "name": "Fermat's Principle",
+          "description": "Principle stating that light rays follow paths of stationary optical transit time between two points.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p7",
+              "page": 7
+            }
+          ]
+        },
+        {
+          "concept_id": "paraxial_abcd_matrices",
+          "name": "Paraxial Rays and ABCD Matrices",
+          "description": "Matrix formulation to trace ray position and slope through paraxial optical elements and interfaces.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p7",
+              "page": 7
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p7",
+          "page": 7
+        }
+      ],
+      "prerequisites": [
+        "mathematical_tools"
+      ]
+    },
+    {
+      "topic_id": "diffraction_applications",
+      "name": "Diffraction Applications",
+      "description": "Applications of wave diffraction, including Fraunhofer diffraction with lenses, resolution limits, grating spectrometers, and Gaussian laser beams.",
+      "subtopics": [
+        "Fraunhofer Diffraction with a Lens",
+        "Resolution of a Telescope",
+        "The Array Theorem",
+        "Diffraction Grating",
+        "Spectrometers",
+        "Gaussian Laser Beams"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "diffraction_grating",
+          "name": "Diffraction Grating",
+          "description": "Periodic optical element used to disperse light into constituent wavelengths via multi-slit interference and diffraction.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p8",
+              "page": 8
+            }
+          ]
+        },
+        {
+          "concept_id": "gaussian_laser_beams",
+          "name": "Gaussian Laser Beams",
+          "description": "Diffraction and propagation characteristics of laser beams with Gaussian transverse field profiles.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p8",
+              "page": 8
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p8",
+          "page": 8
+        }
+      ],
+      "prerequisites": []
+    },
+    {
+      "topic_id": "interferograms_and_holography",
+      "name": "Interferograms and Holography",
+      "description": "Surface testing via optical interferograms and principles of holographic wavefront recording and reconstruction.",
+      "subtopics": [
+        "Interferograms",
+        "Testing Optical Surfaces",
+        "Generating Holograms",
+        "Holographic Wavefront Reconstruction"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "holographic_wavefront_reconstruction",
+          "name": "Holographic Wavefront Reconstruction",
+          "description": "Recording and reconstructing the phase and amplitude of optical wavefronts to recreate three-dimensional fields.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p8",
+              "page": 8
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p8",
+          "page": 8
+        }
+      ],
+      "prerequisites": [
+        "coherence_theory"
+      ]
+    },
+    {
+      "topic_id": "blackbody_radiation",
+      "name": "Blackbody Radiation",
+      "description": "Thermal radiation physics, thermodynamic derivation, Planck's formula, and Einstein's A and B transition coefficients.",
+      "subtopics": [
+        "Stefan-Boltzmann Law",
+        "Failure of the Equipartition Principle",
+        "Planck's Formula",
+        "Einstein's A and B Coefficients"
+      ],
+      "key_concepts": [
+        {
+          "concept_id": "stefan_boltzmann_law",
+          "name": "Stefan-Boltzmann Law",
+          "description": "Law relating the total radiant energy emitted by a blackbody to the fourth power of its absolute temperature.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p8",
+              "page": 8
+            }
+          ]
+        },
+        {
+          "concept_id": "plancks_formula",
+          "name": "Planck's Formula",
+          "description": "Radiation formula resolving the failure of classical equipartition by quantizing energy states of radiation modes.",
+          "source_refs": [
+            {
+              "chunk_id": "pdf_001_p8",
+              "page": 8
+            }
+          ]
+        }
+      ],
+      "source_refs": [
+        {
+          "chunk_id": "pdf_001_p8",
+          "page": 8
+        }
+      ],
+      "prerequisites": []
+    }
+  ]
+}

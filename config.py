@@ -11,7 +11,7 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY", "")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # Flash model for fast multimodal inference
-GEMINI_FLASH_MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-3.5-flash")
+GEMINI_FLASH_MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-latest")
 GEMINI_EMBEDDING_MODEL = "gemini-embedding-001"
 EMBEDDING_DIM = 1000
 

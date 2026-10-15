@@ -1,0 +1,332 @@
+{
+  "chunks_checked": 67,
+  "topics_available": 38,
+  "proposals": [
+    {
+      "chunk_id": "pdf_001_p3",
+      "page": 3,
+      "proposed_topic_id": "optics_course_scope_and_foundations",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p9",
+      "page": 9,
+      "proposed_topic_id": "mathematical_tools",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p10",
+      "page": 10,
+      "proposed_topic_id": "vector_multiplication",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p15",
+      "page": 15,
+      "proposed_topic_id": "complex_numbers_and_euler_formula",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p16",
+      "page": 16,
+      "proposed_topic_id": "complex_numbers_and_euler_formula",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p17",
+      "page": 17,
+      "proposed_topic_id": "complex_wave_representation",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p18",
+      "page": 18,
+      "proposed_topic_id": "complex_number_fundamentals",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p22",
+      "page": 22,
+      "proposed_topic_id": "fourier_series_and_analysis",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p23",
+      "page": 23,
+      "proposed_topic_id": "fourier_integral_and_continuous_transform",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p24",
+      "page": 24,
+      "proposed_topic_id": "fourier_integral_and_transforms",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p26",
+      "page": 26,
+      "proposed_topic_id": "dirac_delta_function_and_parsevals_theorem",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p27",
+      "page": 27,
+      "proposed_topic_id": "mathematical_integrals_and_series",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p28",
+      "page": 28,
+      "proposed_topic_id": "vector_calculus_tools_and_theorems",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p41",
+      "page": 41,
+      "proposed_topic_id": "maxwells_adjustment_to_amperes_law",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p31",
+      "page": 31,
+      "proposed_topic_id": "fourier_theory_and_convolution",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p32",
+      "page": 32,
+      "proposed_topic_id": "fourier_theory_and_convolution",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p33",
+      "page": 33,
+      "proposed_topic_id": "maxwells_equations_overview",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p35",
+      "page": 35,
+      "proposed_topic_id": "gauss_law_for_electric_fields",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p36",
+      "page": 36,
+      "proposed_topic_id": "gauss_law_for_magnetic_fields",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p39",
+      "page": 39,
+      "proposed_topic_id": "maxwells_adjustment_to_amperes_law",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p40",
+      "page": 40,
+      "proposed_topic_id": "maxwells_adjustment_to_amperes_law",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p43",
+      "page": 43,
+      "proposed_topic_id": "polarization_of_materials",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p45",
+      "page": 45,
+      "proposed_topic_id": "the_wave_equation",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p46",
+      "page": 46,
+      "proposed_topic_id": "the_wave_equation",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p47",
+      "page": 47,
+      "proposed_topic_id": "electromagnetic_phenomena",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p48",
+      "page": 48,
+      "proposed_topic_id": "electromagnetic_phenomena",
+      "status": "proposed"
+    },
+    {
+      "chunk_id": "pdf_001_p49",
+      "page": 49,
+      "proposed_topic_id": "electromagnetic_phenomena",
+      "status": "proposed"
+    }
+  ],
+  "unmatched_chunk_ids": [
+    "pdf_001_p1",
+    "pdf_001_p2",
+    "pdf_002_diagrams_p20_d0",
+    "slides_001_s6",
+    "slides_001_s7",
+    "slides_001_s8",
+    "slides_001_s9",
+    "slides_001_s10",
+    "slides_001_s1",
+    "slides_001_s2",
+    "slides_001_s3",
+    "slides_001_s4",
+    "slides_001_s5",
+    "yt_fD1544bM_c4_c1",
+    "yt_fD1544bM_c4_c2",
+    "yt_fD1544bM_c4_c3",
+    "yt_fD1544bM_c4_c4",
+    "pdf_002_diagrams_p9_d0",
+    "pdf_002_diagrams_p15_d0",
+    "pdf_002_diagrams_p16_d0",
+    "pdf_002_diagrams_p17_d0"
+  ],
+  "ambiguous_chunks": [
+    {
+      "chunk_id": "pdf_001_p5",
+      "candidate_topic_ids": [
+        "mathematical_tools",
+        "electromagnetic_phenomena",
+        "plane_waves_and_refractive_index"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p6",
+      "candidate_topic_ids": [
+        "reflection_and_refraction",
+        "multiple_parallel_interfaces",
+        "propagation_in_anisotropic_media"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p7",
+      "candidate_topic_ids": [
+        "superposition_of_quasi_parallel_plane_waves",
+        "coherence_theory",
+        "light_as_rays"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p8",
+      "candidate_topic_ids": [
+        "diffraction_applications",
+        "interferograms_and_holography",
+        "blackbody_radiation"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p11",
+      "candidate_topic_ids": [
+        "vector_multiplication",
+        "multidimensional_derivatives"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p12",
+      "candidate_topic_ids": [
+        "multidimensional_derivatives",
+        "laplacian_operator"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p13",
+      "candidate_topic_ids": [
+        "laplacian_operator",
+        "vector_integral_theorems"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p14",
+      "candidate_topic_ids": [
+        "vector_integral_theorems",
+        "complex_numbers_and_euler_formula"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p19",
+      "candidate_topic_ids": [
+        "complex_number_fundamentals",
+        "complex_wave_representation",
+        "linear_algebra_for_optical_systems"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p20",
+      "candidate_topic_ids": [
+        "linear_algebra_for_optical_systems",
+        "sylvesters_theorem"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p21",
+      "candidate_topic_ids": [
+        "sylvesters_theorem",
+        "fourier_series_and_analysis"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p25",
+      "candidate_topic_ids": [
+        "fourier_integral_and_transforms",
+        "dirac_delta_function_and_parsevals_theorem"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p29",
+      "candidate_topic_ids": [
+        "dirac_delta_function_and_parsevals_theorem",
+        "vector_calculus_tools_and_theorems"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p30",
+      "candidate_topic_ids": [
+        "dirac_delta_function_and_parsevals_theorem",
+        "vector_calculus_tools_and_theorems",
+        "complex_numbers_in_optics"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p34",
+      "candidate_topic_ids": [
+        "maxwells_equations_overview",
+        "gauss_law_for_electric_fields"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p37",
+      "candidate_topic_ids": [
+        "gauss_law_for_magnetic_fields",
+        "faradays_law_of_induction"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p38",
+      "candidate_topic_ids": [
+        "faradays_law_of_induction",
+        "amperes_law"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p42",
+      "candidate_topic_ids": [
+        "maxwells_adjustment_to_amperes_law",
+        "polarization_of_materials"
+      ]
+    },
+    {
+      "chunk_id": "pdf_001_p44",
+      "candidate_topic_ids": [
+        "polarization_of_materials",
+        "the_wave_equation"
+      ]
+    }
+  ]
+}
