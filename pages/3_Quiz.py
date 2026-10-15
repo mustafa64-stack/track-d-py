@@ -139,6 +139,18 @@ with c3:
 if HAS_MEMBER_B:
     st.info(f"Student: **{student_name}** • Current BKT Mastery on *{selected_topic_name}*: **{current_mastery*100:.1f}%** (Recommended difficulty: **{recommended_diff}**)")
 
+def is_substantive_chunk(c):
+    """Filters out Table of Contents, indices, and frontmatter chunks."""
+    text = c.get("text", "")
+    page = c.get("page")
+    if c.get("modality") == "pdf" and page is not None and int(page) <= 10:
+        return False
+    if "CONTENTS" in text or "Table of Contents" in text or ". . . ." in text or "......" in text:
+        return False
+    if len(text.strip()) < 50:
+        return False
+    return True
+
 if st.button("🚀 Generate Adaptive Quiz", type="primary"):
     questions = []
     used_fallback = False
@@ -148,10 +160,12 @@ if st.button("🚀 Generate Adaptive Quiz", type="primary"):
         context_chunks = []
         if HAS_MEMBER_B:
             try:
-                chunks = get_chunks_for_topic(selected_topic_id, limit=3)
+                chunks = get_chunks_for_topic(selected_topic_id, limit=5)
                 if not chunks:
-                    chunks = retrieve_chunks(selected_topic_name, match_count=3, threshold=0.1)
-                context_chunks = [c.get("text", "") for c in chunks if c.get("text")]
+                    chunks = retrieve_chunks(selected_topic_name, match_count=6, threshold=0.1)
+                
+                clean_chunks = [c for c in chunks if is_substantive_chunk(c)]
+                context_chunks = [c.get("text", "") for c in clean_chunks if c.get("text")]
             except Exception as e:
                 print("Error retrieving chunks for quiz:", e)
 
@@ -159,7 +173,7 @@ if st.button("🚀 Generate Adaptive Quiz", type="primary"):
         if not context_chunks:
             for mat in st.session_state.get("uploaded_materials", []):
                 t = mat.get("extracted_text", "")
-                if t:
+                if t and "CONTENTS" not in t and ". . ." not in t:
                     context_chunks.append(t)
 
         study_text = "\n\n".join(context_chunks)
@@ -175,7 +189,15 @@ if st.button("🚀 Generate Adaptive Quiz", type="primary"):
                     difficulty=selected_diff.lower(),
                     count=int(num_questions)
                 )
+                bad_phrases = [
+                    "which section", "what is the title", "which appendix", "table of contents",
+                    "according to the contents", "chapter 13", "section 13", "title of section",
+                    "listed under chapter", "follows the stefan-boltzmann"
+                ]
                 for q in raw_qs:
+                    stem_lower = q.get("stem", "").lower()
+                    if any(bp in stem_lower for bp in bad_phrases):
+                        continue
                     questions.append({
                         "question": q["stem"],
                         "options": q["options"],
@@ -201,8 +223,14 @@ if st.button("🚀 Generate Adaptive Quiz", type="primary"):
                     print("Gemini helper error:", fb_err)
                     used_fallback = True
 
-        if not questions:
-            questions = get_fallback_questions(selected_topic_name, int(num_questions))
+        # If questions are fewer than requested due to filtering, top-up with curated bank
+        if len(questions) < int(num_questions):
+            needed = int(num_questions) - len(questions)
+            fallback_qs = get_fallback_questions(selected_topic_name, needed)
+            existing_stems = {q["question"] for q in questions}
+            for fb in fallback_qs:
+                if fb["question"] not in existing_stems:
+                    questions.append(fb)
             used_fallback = True
 
     if questions:
@@ -231,11 +259,16 @@ if questions:
     with st.form("quiz_form"):
         user_answers = {}
         for index, question in enumerate(questions):
-            st.markdown(f"#### Question {index + 1}")
-            st.write(question.get("question", ""))
+            q_text = question.get("question", "")
+            st.markdown(f"""
+            <div style="background: var(--secondary-background-color); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; padding: 16px 20px; margin-top: 14px; margin-bottom: 8px;">
+                <span style="font-size: 0.8rem; font-weight: 700; color: #818cf8; text-transform: uppercase; letter-spacing: 0.05em;">Question {index + 1} of {len(questions)}</span>
+                <div style="font-size: 1.05rem; font-weight: 600; color: var(--text-color); margin-top: 6px;">{q_text}</div>
+            </div>
+            """, unsafe_allow_html=True)
             options = question.get("options", [])
             user_answers[index] = st.radio(
-                "Select your answer:",
+                f"Select answer for Question {index + 1}:",
                 options,
                 key=f"q_{index}",
                 index=None

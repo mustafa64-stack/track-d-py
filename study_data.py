@@ -33,6 +33,189 @@ AVAILABLE_TOPICS = [
 # --------------------------------------------------
 
 QUESTION_BANK = {
+    "Physics of Light and Optics": [
+        {
+            "question": "According to electromagnetic wave theory, what is the speed of light c in a vacuum related to?",
+            "options": [
+                "Permittivity eps_0 and permeability mu_0 (c = 1/sqrt(mu_0 * eps_0))",
+                "Gravitational constant and Planck's constant",
+                "Only the frequency of light",
+                "The refractive index of air"
+            ],
+            "answer": "Permittivity eps_0 and permeability mu_0 (c = 1/sqrt(mu_0 * eps_0))",
+            "explanation": "Maxwell derived the wave equation in vacuum showing the propagation speed is c = 1 / sqrt(mu_0 * eps_0)."
+        },
+        {
+            "question": "What mathematical theorem relates the divergence of an electric field over a volume to its flux through the boundary surface?",
+            "options": [
+                "Divergence Theorem (Gauss's Theorem)",
+                "Stokes' Theorem",
+                "Fermat's Principle",
+                "Brewster's Law"
+            ],
+            "answer": "Divergence Theorem (Gauss's Theorem)",
+            "explanation": "Gauss's Divergence Theorem transforms the volume integral of the divergence of a vector field into a surface integral of its flux."
+        },
+        {
+            "question": "In an electromagnetic wave in vacuum, what is the spatial orientation between electric field E, magnetic field B, and wavevector k?",
+            "options": [
+                "E, B, and k are mutually perpendicular (orthogonal)",
+                "E and B are parallel to each other and to k",
+                "E and B oscillate in the same plane along k",
+                "B is zero in a vacuum"
+            ],
+            "answer": "E, B, and k are mutually perpendicular (orthogonal)",
+            "explanation": "Electromagnetic waves are transverse: E and B oscillate perpendicularly to each other and to the direction of propagation k."
+        }
+    ],
+    "Electromagnetic Waves": [
+        {
+            "question": "Which set of fundamental equations forms the theoretical foundation of classical electrodynamics and wave optics?",
+            "options": ["Maxwell's Equations", "Schrodinger Equations", "Navier-Stokes Equations", "Euler-Lagrange Equations"],
+            "answer": "Maxwell's Equations",
+            "explanation": "Maxwell's four partial differential equations unify electricity, magnetism, and optics."
+        },
+        {
+            "question": "The Poynting vector S in electromagnetic theory represents:",
+            "options": [
+                "The directional energy flux density (power per unit area) of the wave",
+                "The electrostatic force on a stationary charge",
+                "The wavelength divided by frequency",
+                "The phase difference in a birefringent crystal"
+            ],
+            "answer": "The directional energy flux density (power per unit area) of the wave",
+            "explanation": "The Poynting vector S = (1/mu_0) (E x B) measures the rate of electromagnetic energy transport per unit area."
+        }
+    ],
+    "Reflection and Refraction": [
+        {
+            "question": "What does Snell's Law quantitatively relate at an interface between two transparent dielectric media?",
+            "options": [
+                "Refractive indices and the sines of incident and refracted angles (n1 sin theta1 = n2 sin theta2)",
+                "The energy dissipation to wave amplitude",
+                "The Doppler frequency shift of light",
+                "The rate of photon absorption"
+            ],
+            "answer": "Refractive indices and the sines of incident and refracted angles (n1 sin theta1 = n2 sin theta2)",
+            "explanation": "Snell's Law states n1 * sin(theta1) = n2 * sin(theta2), derived from phase matching at the boundary."
+        },
+        {
+            "question": "According to Fermat's Principle of Least Time, light traverses an optical path that:",
+            "options": [
+                "Takes stationary (extremum) time relative to nearby paths",
+                "Always follows a straight line regardless of medium",
+                "Maximizes geometric path length",
+                "Is unpredictable in dielectric media"
+            ],
+            "answer": "Takes stationary (extremum) time relative to nearby paths",
+            "explanation": "Fermat's principle asserts that the actual path taken by light between two points is an extremum of optical path length."
+        },
+        {
+            "question": "When light enters a medium with a higher refractive index (denser medium), what happens to its wave properties?",
+            "options": [
+                "Speed and wavelength decrease, while frequency remains constant",
+                "Speed increases while wavelength stays constant",
+                "Frequency decreases and wavelength increases",
+                "All wave properties remain unchanged"
+            ],
+            "answer": "Speed and wavelength decrease, while frequency remains constant",
+            "explanation": "Since v = c/n and lambda = lambda_0/n, velocity and wavelength decrease while frequency f is determined solely by the source."
+        }
+    ],
+    "Total Internal Reflection": [
+        {
+            "question": "Under what physical condition does Total Internal Reflection (TIR) occur?",
+            "options": [
+                "Light travels from denser (n1) to rarer (n2) medium with angle > critical angle",
+                "Light travels from vacuum into diamond at any angle",
+                "Light travels from air into water at normal incidence",
+                "Only when light is completely circularly polarized"
+            ],
+            "answer": "Light travels from denser (n1) to rarer (n2) medium with angle > critical angle",
+            "explanation": "When light travels from n1 > n2 and theta_i > theta_c = arcsin(n2/n1), 100% of the energy is reflected back into the denser medium."
+        },
+        {
+            "question": "How is the critical angle theta_c calculated for an interface between media n1 and n2 (n1 > n2)?",
+            "options": [
+                "theta_c = arcsin(n2 / n1)",
+                "theta_c = arctan(n1 / n2)",
+                "theta_c = arccos(n2 * n1)",
+                "theta_c = arcsin(n1 / n2)"
+            ],
+            "answer": "theta_c = arcsin(n2 / n1)",
+            "explanation": "Setting theta_2 = 90 degrees in Snell's Law gives sin(theta_c) = n2 / n1."
+        },
+        {
+            "question": "Which widespread technology directly relies on total internal reflection for ultra-high speed communication?",
+            "options": [
+                "Fiber optic cables",
+                "Cathode ray tubes",
+                "Copper coaxial cables",
+                "Microwave horns"
+            ],
+            "answer": "Fiber optic cables",
+            "explanation": "Optical fiber waveguides trap light pulses in their higher-index glass cores via continuous total internal reflection."
+        }
+    ],
+    "Polarization and Brewster's Angle": [
+        {
+            "question": "What is Brewster's Angle (polarizing angle)?",
+            "options": [
+                "The angle of incidence where reflected light is completely linearly polarized",
+                "The angle where total internal reflection begins",
+                "The angle where diffraction fringes disappear",
+                "The angle where refractive index equals zero"
+            ],
+            "answer": "The angle of incidence where reflected light is completely linearly polarized",
+            "explanation": "At Brewster's angle, p-polarized reflection drops to zero, leaving only s-polarized (linearly polarized) light."
+        },
+        {
+            "question": "At Brewster's angle theta_B, what is the geometric relationship between the reflected and refracted rays?",
+            "options": [
+                "They are mutually perpendicular (orthogonal at 90 degrees)",
+                "They are parallel and travel in opposite directions",
+                "They form an angle of 180 degrees",
+                "They overlap along the surface normal"
+            ],
+            "answer": "They are mutually perpendicular (orthogonal at 90 degrees)",
+            "explanation": "Because theta_r + theta_t = 90 degrees, oscillating dipoles in the second medium cannot radiate along their oscillation axis."
+        },
+        {
+            "question": "Which formula determines Brewster's angle theta_B for light incident from medium n1 onto medium n2?",
+            "options": [
+                "tan(theta_B) = n2 / n1",
+                "sin(theta_B) = n1 / n2",
+                "cos(theta_B) = n2 / n1",
+                "tan(theta_B) = n1 * n2"
+            ],
+            "answer": "tan(theta_B) = n2 / n1",
+            "explanation": "Brewster's condition theta_B + theta_t = 90 deg gives sin(theta_B) = n2/n1 * cos(theta_B) => tan(theta_B) = n2 / n1."
+        }
+    ],
+    "Wave Optics & Huygens Principle": [
+        {
+            "question": "What does Huygens' Principle state about wave propagation?",
+            "options": [
+                "Every point on a wavefront acts as a source of secondary wavelets",
+                "Light only propagates in straight Euclidean rays",
+                "Electrons cannot emit photons during acceleration",
+                "Interference only occurs for longitudinal waves"
+            ],
+            "answer": "Every point on a wavefront acts as a source of secondary wavelets",
+            "explanation": "The envelope of secondary spherical wavelets reconstructs the advancing wavefront, explaining refraction and diffraction."
+        },
+        {
+            "question": "In Young's double-slit experiment, what produces the alternating bright and dark fringes on the screen?",
+            "options": [
+                "Constructive and destructive interference of coherent light",
+                "Photoelectric emission from the barrier slits",
+                "Total internal reflection inside the slits",
+                "Thermal dissipation of photons"
+            ],
+            "answer": "Constructive and destructive interference of coherent light",
+            "explanation": "Path length difference delta = d * sin(theta) causes phase differences leading to constructive and destructive interference fringes."
+        }
+    ],
     "Data Structures": [
         {
             "question": "Which data structure follows LIFO?",
@@ -196,6 +379,27 @@ def apply_custom_theme():
     
     /* Code blocks contrast in dark mode */
     pre, code {
+        color: var(--text-color) !important;
+    }
+
+    /* Form containers: dark mode sleek styling */
+    [data-testid="stForm"] {
+        border: 1px solid rgba(148, 163, 184, 0.18) !important;
+        border-radius: 16px !important;
+        background: rgba(26, 31, 44, 0.6) !important;
+        padding: 24px !important;
+    }
+
+    /* Radio button text */
+    div[data-testid="stRadio"] label {
+        color: var(--text-color) !important;
+        font-size: 0.98rem;
+    }
+
+    /* Expander styling */
+    .streamlit-expanderHeader {
+        background-color: var(--secondary-background-color) !important;
+        border-radius: 8px !important;
         color: var(--text-color) !important;
     }
     </style>
