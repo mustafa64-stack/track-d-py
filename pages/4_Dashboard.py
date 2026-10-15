@@ -49,16 +49,25 @@ st.markdown("""
 .dashboard-title {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #1e293b;
+    color: var(--text-color) !important;
     margin-bottom: 0.2rem;
 }
 .tag-pill {
-    background: #fee2e2;
-    color: #991b1b;
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #ef4444 !important;
     padding: 4px 10px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 600;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+}
+.weak-alert-box {
+    background: rgba(239, 68, 68, 0.12) !important;
+    border: 1px solid rgba(239, 68, 68, 0.35) !important;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 1rem;
+    color: var(--text-color) !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -95,7 +104,7 @@ with col_mastery:
             st.markdown(f"**{topic}**")
             st.progress(score / 100.0)
             status_text = "Mastered" if score >= 80 else ("In Progress" if score >= 60 else "Needs Practice")
-            color = "#059669" if score >= 80 else ("#d97706" if score >= 60 else "#dc2626")
+            color = "#10b981" if score >= 80 else ("#f59e0b" if score >= 60 else "#ef4444")
             st.markdown(f"<span style='color:{color}; font-weight:600;'>{status_text}</span> • Estimated Mastery: **{score:.0f}%**", unsafe_allow_html=True)
             st.write("")
     else:
@@ -107,9 +116,9 @@ with col_insights:
 
     if weak_topics:
         st.markdown("""
-        <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:12px; padding:16px; margin-bottom:1rem;">
-            <b style="color:#9f1239;">Concepts Below Mastery Threshold (&lt;60%):</b>
-            <p style="color:#475569; font-size:0.9rem; margin-top:6px;">
+        <div class="weak-alert-box">
+            <b style="color:#ef4444;">Concepts Below Mastery Threshold (&lt;60%):</b>
+            <p style="font-size:0.9rem; margin-top:6px; opacity:0.9;">
                 Our adaptive BKT model recommends revisiting these concepts before your exam:
             </p>
         </div>

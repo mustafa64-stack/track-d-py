@@ -57,7 +57,10 @@ def build_citation(chunk: dict) -> dict:
         end_fmt = seconds_to_str(end_sec or 0)
         label = f"Video [{start_fmt} - {end_fmt}]"
         location = f"{start_fmt}"
-        link_or_file = image_ref or f"https://youtube.com?t={int(start_sec or 0)}s"
+        clean_url = image_ref or ""
+        while clean_url.startswith("https://www.youtube.com/watch?v=https://"):
+            clean_url = clean_url[len("https://www.youtube.com/watch?v="):]
+        link_or_file = clean_url or f"https://www.youtube.com/watch?v=fD1544bM_c4&t={int(start_sec or 0)}s"
     elif modality == "image":
         label = f"Diagram (Page {page})" if page else "Figure / Diagram"
         location = f"Page {page}" if page else ""
@@ -73,6 +76,8 @@ def build_citation(chunk: dict) -> dict:
         "label": label,
         "location": location,
         "link_or_file": link_or_file,
+        "start_sec": float(start_sec) if start_sec is not None else 0.0,
+        "end_sec": float(end_sec) if end_sec is not None else 0.0,
         "snippet": chunk.get("text", "")[:150].replace("\n", " ") + "...",
         "similarity": float(chunk.get("similarity", 0.0))
     }

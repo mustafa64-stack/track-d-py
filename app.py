@@ -39,63 +39,71 @@ st.markdown("""
 <style>
 .main-title {
     text-align: center;
-    font-size: 2.4rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 800;
     margin-bottom: 0.2rem;
-    color: #1e293b;
+    color: var(--text-color) !important;
 }
 .subtitle {
     text-align: center;
     font-size: 1.15rem;
-    color: #64748b;
+    color: var(--text-color) !important;
+    opacity: 0.85;
     margin-bottom: 1.8rem;
 }
 .welcome-hero {
     padding: 28px;
     border-radius: 16px;
     background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    color: #ffffff;
+    color: #ffffff !important;
     text-align: center;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.2);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.25);
 }
-.welcome-hero h2 {
-    color: #ffffff;
-    margin-bottom: 0.5rem;
+.welcome-hero h2, .welcome-hero p {
+    color: #ffffff !important;
 }
 .feature-card {
     padding: 22px;
     border-radius: 14px;
     min-height: 180px;
     margin-bottom: 1rem;
-    border: 1px solid #e2e8f0;
+    background: var(--secondary-background-color) !important;
+    border: 1px solid rgba(148, 163, 184, 0.22) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .feature-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.feature-card h4 {
+    color: var(--text-color) !important;
+    margin-top: 0;
+}
+.feature-card p {
+    color: var(--text-color) !important;
+    opacity: 0.85;
+    font-size: 0.95rem;
 }
 .card-upload {
-    background: linear-gradient(135deg, #fdf2f8, #fff1f2);
-    border-color: #fbcfe8;
+    border-left: 5px solid #ec4899;
 }
 .card-chat {
-    background: linear-gradient(135deg, #eff6ff, #f0fdf4);
-    border-color: #bfdbfe;
+    border-left: 5px solid #3b82f6;
 }
 .card-quiz {
-    background: linear-gradient(135deg, #fffbeb, #fef3c7);
-    border-color: #fde68a;
+    border-left: 5px solid #f59e0b;
 }
 .card-dash {
-    background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
-    border-color: #bbf7d0;
+    border-left: 5px solid #10b981;
 }
 .tip-callout {
     padding: 16px 20px;
     border-radius: 12px;
-    background: #f8fafc;
+    background: var(--secondary-background-color) !important;
     border-left: 4px solid #6366f1;
+    color: var(--text-color) !important;
     margin: 1.5rem 0;
 }
 </style>
@@ -176,12 +184,12 @@ with col1:
         f"""
         <div class="feature-card card-upload">
             <h4 style="margin-top:0;">📤 Upload &amp; Manage Notes</h4>
-            <p style="color:#475569; font-size:0.95rem;">
+            <p>
                 Keep your PDF lecture slides and lecture notes
                 indexed and ready for reference.
             </p>
             <div style="margin-top:12px; font-weight:600;
-                        color:#db2777; font-size:0.9rem;">
+                        color:#ec4899; font-size:0.9rem;">
                 📁 {materials_count} Files Available
             </div>
         </div>
@@ -200,12 +208,12 @@ with col1:
         f"""
         <div class="feature-card card-quiz">
             <h4 style="margin-top:0;">📝 Interactive Practice Quiz</h4>
-            <p style="color:#475569; font-size:0.95rem;">
+            <p>
                 Generate customized multiple-choice challenges
-                across CS concepts and test retention.
+                across course concepts and test retention.
             </p>
             <div style="margin-top:12px; font-weight:600;
-                        color:#d97706; font-size:0.9rem;">
+                        color:#f59e0b; font-size:0.9rem;">
                 🎯 {quizzes_count} Quizzes Completed
             </div>
         </div>
@@ -226,12 +234,12 @@ with col2:
         """
         <div class="feature-card card-chat">
             <h4 style="margin-top:0;">💬 Concept AI Tutor</h4>
-            <p style="color:#475569; font-size:0.95rem;">
+            <p>
                 Ask targeted questions, get simplified explanations,
-                and walk through code step-by-step.
+                and cite textbook, slides, and video timestamps.
             </p>
             <div style="margin-top:12px; font-weight:600;
-                        color:#2563eb; font-size:0.9rem;">
+                        color:#60a5fa; font-size:0.9rem;">
                 🤖 Instant Interactive Explanations
             </div>
         </div>
@@ -250,12 +258,12 @@ with col2:
         f"""
         <div class="feature-card card-dash">
             <h4 style="margin-top:0;">📊 Progress &amp; Mastery</h4>
-            <p style="color:#475569; font-size:0.95rem;">
+            <p>
                 Identify weak subtopics, review past scores,
-                and track your proficiency over time.
+                and track cognitive BKT mastery over time.
             </p>
             <div style="margin-top:12px; font-weight:600;
-                        color:#059669; font-size:0.9rem;">
+                        color:#10b981; font-size:0.9rem;">
                 📈 {average_mastery}% Average Mastery
             </div>
         </div>

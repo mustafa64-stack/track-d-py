@@ -241,7 +241,7 @@ if questions:
                 index=None
             )
             st.write("")
-        submitted = st.form_submit_button("Submit Assessment & Update Mastery")
+        submitted = st.form_submit_button("Submit Assessment & Update Mastery", type="primary", use_container_width=True)
 
     if submitted:
         st.session_state["quiz_answers"] = user_answers

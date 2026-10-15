@@ -173,10 +173,11 @@ with tab_chunks:
                 st.write(text)
                 if chunk.get("topic_id"):
                     st.caption(f"Topic Tag: `{chunk.get('topic_id')}`")
-            with c_media:
                 if image_ref and image_ref.endswith((".png", ".jpg", ".jpeg")):
                     full_p = os.path.join(ROOT_DIR, image_ref)
                     if os.path.exists(full_p):
                         st.image(full_p, use_container_width=True)
                 elif image_ref and image_ref.startswith("http"):
-                    st.link_button("▶️ Watch Video Timestamp", image_ref)
+                    start_time_sec = int(start_sec or 0)
+                    st.video(image_ref, start_time=start_time_sec)
+                    st.link_button(f"🌐 Open at {start_time_sec}s on YouTube", image_ref)

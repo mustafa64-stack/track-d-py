@@ -13,6 +13,14 @@ import streamlit as st
 # --------------------------------------------------
 
 AVAILABLE_TOPICS = [
+    "Physics of Light and Optics",
+    "Electromagnetic Waves",
+    "Reflection and Refraction",
+    "Total Internal Reflection",
+    "Polarization and Brewster's Angle",
+    "Wave Optics & Huygens Principle",
+    "Fourier Optics & Diffraction",
+    "Laser Physics & Coherence",
     "Data Structures",
     "Operating Systems",
     "Computer Networks",
@@ -115,6 +123,85 @@ QUESTION_BANK = {
 # 3. INITIALIZE SESSION STATE
 # --------------------------------------------------
 
+def apply_custom_theme():
+    """Injects adaptive CSS that guarantees flawless font contrast in both dark and light modes."""
+    st.markdown("""
+    <style>
+    /* Global modern typography */
+    html, body, [class*="st-"] {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Ensure titles adapt dynamically to current theme text color */
+    .main-title, .dashboard-title {
+        color: var(--text-color) !important;
+        font-weight: 800 !important;
+    }
+    .subtitle {
+        color: var(--text-color) !important;
+        opacity: 0.8 !important;
+    }
+    
+    /* Adaptive glassmorphic feature cards */
+    .feature-card {
+        background: var(--secondary-background-color) !important;
+        color: var(--text-color) !important;
+        border: 1px solid rgba(148, 163, 184, 0.22) !important;
+        border-radius: 14px;
+        padding: 22px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .feature-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+    .feature-card h4 {
+        color: var(--text-color) !important;
+        margin-top: 0;
+    }
+    .feature-card p {
+        color: var(--text-color) !important;
+        opacity: 0.85 !important;
+        font-size: 0.95rem;
+    }
+    
+    /* Callout & tip boxes */
+    .tip-callout {
+        background: var(--secondary-background-color) !important;
+        border-left: 4px solid #6366f1 !important;
+        color: var(--text-color) !important;
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin: 1.5rem 0;
+    }
+    .weak-alert-box {
+        background: rgba(239, 68, 68, 0.12) !important;
+        border: 1px solid rgba(239, 68, 68, 0.35) !important;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 1rem;
+        color: var(--text-color) !important;
+    }
+    .tag-pill {
+        background: rgba(239, 68, 68, 0.15) !important;
+        color: #ef4444 !important;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    }
+    
+    /* Code blocks contrast in dark mode */
+    pre, code {
+        color: var(--text-color) !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+
 def init_session_state():
 
     defaults = {
@@ -129,6 +216,8 @@ def init_session_state():
     for key, default_value in defaults.items():
         if key not in st.session_state:
             st.session_state[key] = default_value
+
+    apply_custom_theme()
 
 
 # --------------------------------------------------

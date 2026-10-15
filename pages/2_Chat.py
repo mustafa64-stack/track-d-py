@@ -168,9 +168,10 @@ def show_source_viewer():
                 st.warning(f"Preview image file not found at {link_or_file}.")
         
         # Check if source is a video link
-        elif link_or_file and link_or_file.startswith("http"):
-            st.video(link_or_file)
-            st.link_button("🌐 Open in YouTube", link_or_file)
+        elif link_or_file and ("youtube" in link_or_file.lower() or "youtu.be" in link_or_file.lower() or link_or_file.startswith("http")):
+            start_time = int(selected.get("start_sec") or 0)
+            st.video(link_or_file, start_time=start_time)
+            st.link_button(f"🌐 Open at {selected.get('location', 'start')} on YouTube", link_or_file)
 
         # Fallback to in-session uploaded document viewer
         elif selected.get("document_id"):
@@ -229,7 +230,7 @@ def display_message(message, message_index):
 # --------------------------------------------------
 
 with st.expander("📁 Grounded Knowledge Sources", expanded=False):
-    st.write("✅ **Supabase Vector Store Connected** (67 chunks indexed: Textbook PDF, Lecture Slides, YouTube timestamps, Diagrams)")
+    st.write("✅ **Supabase Vector Store Connected** (76 chunks indexed: Textbook PDF, Lecture Slides, YouTube Timestamps, Diagrams)")
     docs = st.session_state.get("uploaded_materials", [])
     if docs:
         st.write(f"📄 Plus **{len(docs)}** active uploaded in-session document(s)")
