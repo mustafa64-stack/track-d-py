@@ -14,7 +14,7 @@ from config import SUPABASE_URL, SUPABASE_KEY
 from supabase import create_client
 
 st.set_page_config(
-    page_title="Knowledge Base | AI Study Companion",
+    page_title="Knowledge Base | StudyX",
     page_icon="📚",
     layout="wide"
 )

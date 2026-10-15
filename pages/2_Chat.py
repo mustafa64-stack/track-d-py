@@ -25,7 +25,7 @@ except Exception:
 # --------------------------------------------------
 
 st.set_page_config(
-    page_title="Concept AI Tutor",
+    page_title="Concept AI Tutor | StudyX",
     page_icon="💬",
     layout="wide"
 )

@@ -1,16 +1,23 @@
-# 🌟 PrismAI — Multimodal AI Study Companion & Adaptive Assessment Engine
-> **Multimodal AI Hackathon 2026 — Track D: Personalized Tutoring & Adaptive Learning**
-> Built with Gemini 2.5, Supabase pgvector, and Bayesian Knowledge Tracing (BKT).
+# 🌟 StudyX — Multimodal AI Study Companion & Adaptive Assessment Engine
+> **Multimodal AI Hackathon 2026 — Track D: Personalized Tutoring & Adaptive Learning**  
+> Built with Gemini 2.5, Supabase pgvector, Bayesian Knowledge Tracing (BKT), and Streamlit.
+
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Streamlit App](https://img.shields.io/badge/Streamlit-1.32%2B-FF4B4B.svg)](https://streamlit.io/)
+[![Gemini 2.5 Flash](https://img.shields.io/badge/LLM-Gemini%202.5%20Flash-4285F4.svg)](https://ai.google.dev/)
+[![Supabase pgvector](https://img.shields.io/badge/Database-Supabase%20pgvector-3ECF8E.svg)](https://supabase.com/)
 
 ---
 
 ## 💡 Overview & Problem Statement
-Students frequently study from fragmented materials — textbook chapters, slide decks, diagrams, and video lectures — while traditional AI chatbots hallucinate ungrounded responses and fail to model student comprehension.
+Students constantly juggle fragmented course materials across textbooks, slide decks, diagrams, and video lectures. Standard LLM study assistants suffer from two fatal flaws:
+1. **Ungrounded Hallucinations:** They invent answers or cite non-existent textbook pages and lecture timestamps.
+2. **One-Size-Fits-All Quizzing:** They have no internal cognitive model of what the learner actually understands, serving trivial or repetitive questions.
 
-**PrismAI** solves this by unifying multimodal course content into a **source-grounded knowledge graph**, powering:
-1. **Multimodal Grounded AI Tutor:** Citations linking directly to exact textbook page images, slide cards, and timestamped YouTube video segments with an honest refusal guardrail for out-of-domain queries.
-2. **Adaptive Cognitive Assessments:** Real-time question generation with two-step cross-validation, anti-trivia filtering, and Bayesian Knowledge Tracing (BKT) student cognitive mastery modeling.
-3. **Transparent Learning Analytics:** Empirical learning curves, mastery tracking, and targeted weak-concept remediation.
+**StudyX** solves this by unifying multimodal course content into an interconnected, **source-grounded knowledge base**, powering:
+1. **Multimodal Grounded AI Tutor:** Direct page-level PDF citations, slide cards, and timestamped YouTube video players with an honest refusal guardrail for out-of-domain questions.
+2. **Adaptive Cognitive Assessment Engine:** Real-time question generation with anti-trivia filtering, two-step LLM cross-verification, and **Bayesian Knowledge Tracing (BKT)** student modeling.
+3. **Transparent Mastery Analytics:** Real-time cognitive mastery curves, streak tracking, and targeted weak-concept revision recommendations.
 
 ---
 
@@ -33,7 +40,7 @@ flowchart TD
         VectorStore --> RAGSearch
         RAGSearch --> RefusalGate{"Threshold Check (>0.60 Similarity?)"}
         RefusalGate -- No --> Refusal["🛡️ Honest Refusal: Flagged as Out-of-Domain"]
-        RefusalGate -- Yes --> GeminiTutor["Gemini 2.5 Tutor Synthesis"]
+        RefusalGate -- Yes --> GeminiTutor["Gemini 2.5 Flash Tutor Synthesis"]
         GeminiTutor --> CitedAnswer["Cited Response + Clickable Receipt Chips"]
         CitedAnswer --> MediaViewer["Source Viewer (Page Image / Slide Card / Timestamped Video Player)"]
     end
@@ -71,7 +78,8 @@ flowchart TD
 - **Intake & Diagnostic Flow:** Smooth diagnostic baseline for new students with no previous history.
 
 ### 4. User Experience & Aesthetics (15%)
-- **Glassmorphic Dark Theme:** Built with cohesive contrast-safe CSS (`var(--text-color)`, `var(--secondary-background-color)`), responsive cards, and vibrant WCAG-accessible indicators.
+- **Glassmorphic Theme:** Dark mode by default with cohesive contrast-safe CSS (`var(--text-color)`, `var(--secondary-background-color)`), responsive cards, and vibrant WCAG-accessible indicators.
+- **Streamlit Material Symbols Integration:** Flawless icon rendering for expanders, upload controls, and navigation buttons without font ligature clipping.
 - **Interactive Multi-Page Portal:**
   - `app.py`: Overview portal, active streak, and learning snapshot.
   - `pages/1_Upload.py`: Document upload & YouTube lecture ingestion with embedded player preview.
@@ -82,7 +90,7 @@ flowchart TD
 
 ### 5. System Evaluation & Benchmarking (15%)
 - **Simulated Learning Curves:** Verified student simulations across Weak (0.25), Average (0.50), and Strong (0.75) profiles showing empirical mastery gains over 5 sessions (`simulation_chart.png`).
-- **Comprehensive Test Set:** Automated verification across 15 curated benchmark queries with known citations and refusal assertions.
+- **Curated Benchmark Suite:** Automated verification across 15 curated benchmark queries with known citations and refusal assertions.
 
 ---
 
@@ -90,8 +98,8 @@ flowchart TD
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/mustafa64-stack/track-d-py.git
-cd track-d-py
+git clone https://github.com/shagun12mehta-maker/study-companion.git
+cd study-companion
 
 # 2. Set up virtual environment
 python3 -m venv venv
@@ -110,4 +118,7 @@ Open `http://localhost:8501` in your browser.
 ---
 
 ## 👥 Authors & Team
-- **Mustafa & Shagun** — Track D: Personalized Tutoring & Adaptive Learning
+- **Shagun Mehta** ([shagun12mehta-maker](https://github.com/shagun12mehta-maker))
+- **Mustafa** ([mustafa64-stack](https://github.com/mustafa64-stack))
+
+*Track D: Personalized Tutoring & Adaptive Learning — Multimodal AI Hackathon 2026*

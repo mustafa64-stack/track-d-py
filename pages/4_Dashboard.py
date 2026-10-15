@@ -17,7 +17,7 @@ except Exception:
     HAS_LEARNER_LOOP = False
 
 st.set_page_config(
-    page_title="Learning Analytics | AI Study Companion",
+    page_title="Learning Analytics | StudyX",
     page_icon="📊",
     layout="wide"
 )

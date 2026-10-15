@@ -37,8 +37,8 @@ except Exception as e:
 # --------------------------------------------------
 
 st.set_page_config(
-    page_title="Upload Study Material | AI Study Companion",
-    page_icon="📚",
+    page_title="Upload Study Material | StudyX",
+    page_icon="📤",
     layout="wide"
 )
 

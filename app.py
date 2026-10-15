@@ -5,8 +5,8 @@ from html import escape
 from study_data import init_session_state, calculate_dashboard_metrics
 
 st.set_page_config(
-    page_title="AI Study Companion",
-    page_icon="📚",
+    page_title="StudyX — Multimodal AI Companion",
+    page_icon="🎓",
     layout="wide"
 )
 
@@ -111,7 +111,7 @@ st.markdown("""
 
 
 # --- Sidebar: User Profile & Status ---
-st.sidebar.title("📚 Study Portal")
+st.sidebar.title("🚀 StudyX Portal")
 
 student_input = st.sidebar.text_input(
     "Student Name",
@@ -142,13 +142,12 @@ st.sidebar.metric("🔥 Study Streak", f"{streak_days} days")
 
 # --- Main Page Header ---
 st.markdown(
-    '<div class="main-title">AI Study Companion</div>',
+    '<div class="main-title">StudyX</div>',
     unsafe_allow_html=True
 )
 
 st.markdown(
-    '<div class="subtitle">Personalized notes comprehension, '
-    'interactive tutoring, and progress tracking</div>',
+    '<div class="subtitle">Next-Generation Multimodal AI Study Companion & Adaptive Assessment Engine</div>',
     unsafe_allow_html=True
 )
 

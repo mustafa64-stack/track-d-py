@@ -310,9 +310,28 @@ def apply_custom_theme():
     """Injects adaptive CSS that guarantees flawless font contrast in both dark and light modes."""
     st.markdown("""
     <style>
-    /* Global modern typography */
-    html, body, [class*="st-"] {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif !important;
+    /* Global modern typography - applied without breaking Streamlit Material Symbols icon ligatures */
+    html, body, p, label, input, textarea, button, select {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Explicitly preserve icon ligatures for Streamlit and Material Symbols */
+    [data-testid="stIconMaterial"], 
+    .material-symbols-rounded, 
+    .material-symbols-outlined, 
+    [class*="material-symbols"],
+    [data-testid*="Icon"],
+    [data-testid="stExpanderToggleIcon"],
+    i.material-icons {
+        font-family: "Material Symbols Rounded", "Material Symbols Outlined", "Material Icons" !important;
+        font-style: normal;
+        letter-spacing: normal;
+        text-transform: none;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: 'liga';
         -webkit-font-smoothing: antialiased;
     }
     

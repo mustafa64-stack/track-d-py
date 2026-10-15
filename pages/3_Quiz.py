@@ -23,7 +23,7 @@ except Exception as e:
     print("Member B import warning:", e)
 
 st.set_page_config(
-    page_title="Adaptive Practice Quiz | AI Study Companion",
+    page_title="Adaptive Practice Quiz | StudyX",
     page_icon="📝",
     layout="wide"
 )
