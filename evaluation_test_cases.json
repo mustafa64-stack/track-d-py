@@ -1,0 +1,495 @@
+{
+  "title": "AI Study Companion — Day 3 Evaluation Test Cases",
+  "source_pdf": "COA_Case_Study_PPT_Maroon_Gold_Grey (1)(1).pdf",
+  "instructions": "Use source_based_cases to test grounded answers and page citations. Use off_material_cases to test whether the app declines questions not answered by the uploaded PDF. These off-material questions are general-knowledge questions, but the app should refuse them when operating in strict source-grounded mode.",
+  "source_based_cases": [
+    {
+      "id": "SB01",
+      "question": "Why is branch prediction needed in a CPU?",
+      "options": [
+        "To guess the next instruction path before a branch is resolved",
+        "To increase the size of RAM",
+        "To replace instruction decoding",
+        "To remove the need for caches"
+      ],
+      "expected_answer": "To guess the next instruction path before a branch is resolved",
+      "expected_source_page": 2,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB02",
+      "question": "According to the PDF, branches occur roughly every how many instructions?",
+      "options": [
+        "2–3",
+        "5–7",
+        "10–12",
+        "20–25"
+      ],
+      "expected_answer": "5–7",
+      "expected_source_page": 2,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB03",
+      "question": "What is the control hazard described in the PDF?",
+      "options": [
+        "The CPU does not know the next instruction until a branch is resolved",
+        "The CPU cannot access the system bus",
+        "The cache becomes full",
+        "The clock stops permanently"
+      ],
+      "expected_answer": "The CPU does not know the next instruction until a branch is resolved",
+      "expected_source_page": 2,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB04",
+      "question": "Which two things does the predictor try to predict early?",
+      "options": [
+        "Direction and target",
+        "Opcode and register size",
+        "Cache level and bus width",
+        "Clock speed and voltage"
+      ],
+      "expected_answer": "Direction and target",
+      "expected_source_page": 2,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB05",
+      "question": "What does speculative execution allow the CPU to do?",
+      "options": [
+        "Fetch and execute along a predicted path",
+        "Turn off the pipeline",
+        "Avoid all branch instructions",
+        "Replace the operating system"
+      ],
+      "expected_answer": "Fetch and execute along a predicted path",
+      "expected_source_page": 2,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB06",
+      "question": "About how many stages are on the Pentium 4 misprediction path in the PDF?",
+      "options": [
+        "5",
+        "10",
+        "20",
+        "40"
+      ],
+      "expected_answer": "20",
+      "expected_source_page": 2,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB07",
+      "question": "What is static branch prediction based on?",
+      "options": [
+        "A fixed rule without branch history",
+        "A neural network trained online",
+        "Only the return address stack",
+        "The contents of the data cache"
+      ],
+      "expected_answer": "A fixed rule without branch history",
+      "expected_source_page": 3,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB08",
+      "question": "For static prediction, how does the PDF say a backward branch is predicted?",
+      "options": [
+        "Taken",
+        "Not taken",
+        "Always invalid",
+        "Only after a cache miss"
+      ],
+      "expected_answer": "Taken",
+      "expected_source_page": 3,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB09",
+      "question": "For static prediction, how does the PDF say a forward branch is predicted?",
+      "options": [
+        "Taken",
+        "Not taken",
+        "Always restarted",
+        "Always a return"
+      ],
+      "expected_answer": "Not taken",
+      "expected_source_page": 3,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB10",
+      "question": "What does dynamic prediction use?",
+      "options": [
+        "Past behavior of each branch",
+        "Only the source-code comments",
+        "A fixed rule and no history",
+        "The monitor refresh rate"
+      ],
+      "expected_answer": "Past behavior of each branch",
+      "expected_source_page": 3,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB11",
+      "question": "Where does the PDF say dynamic prediction stores branch information?",
+      "options": [
+        "Branch Target Buffer (BTB)",
+        "Hard disk partition table",
+        "Keyboard buffer",
+        "Display memory"
+      ],
+      "expected_answer": "Branch Target Buffer (BTB)",
+      "expected_source_page": 3,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB12",
+      "question": "What is the fallback approach mentioned for Pentium 4?",
+      "options": [
+        "Static prediction",
+        "Disabling the BTB",
+        "Always predicting not taken",
+        "Restarting every instruction"
+      ],
+      "expected_answer": "Static prediction",
+      "expected_source_page": 3,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB13",
+      "question": "In the architecture diagram, what does the BTB help predict?",
+      "options": [
+        "The next address before instructions are decoded",
+        "The final program output",
+        "The disk location of the executable",
+        "The screen resolution"
+      ],
+      "expected_answer": "The next address before instructions are decoded",
+      "expected_source_page": 4,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB14",
+      "question": "Which item is listed in the fetch and decode unit alongside fetch/ITLB and decoder?",
+      "options": [
+        "Trace Cache",
+        "Printer controller",
+        "Audio mixer",
+        "USB hub"
+      ],
+      "expected_answer": "Trace Cache",
+      "expected_source_page": 4,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB15",
+      "question": "Which component is listed in the execution core?",
+      "options": [
+        "Integer ALUs",
+        "Branch printer",
+        "File explorer",
+        "Network browser"
+      ],
+      "expected_answer": "Integer ALUs",
+      "expected_source_page": 4,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB16",
+      "question": "About how many entries does the PDF say the Pentium 4 BTB has?",
+      "options": [
+        "About 400",
+        "About 4K",
+        "About 40K",
+        "About 4 million"
+      ],
+      "expected_answer": "About 4K",
+      "expected_source_page": 5,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB17",
+      "question": "What information does the BTB store, according to the PDF?",
+      "options": [
+        "Addresses, targets and history",
+        "Only source-code comments",
+        "Only arithmetic results",
+        "Usernames and passwords"
+      ],
+      "expected_answer": "Addresses, targets and history",
+      "expected_source_page": 5,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB18",
+      "question": "What decides taken/not-taken predictions in history-based prediction?",
+      "options": [
+        "Past outcomes of the branch",
+        "The color of the slide",
+        "The amount of disk space",
+        "The instruction's line number in a PDF"
+      ],
+      "expected_answer": "Past outcomes of the branch",
+      "expected_source_page": 5,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB19",
+      "question": "What static rule is used if a branch is not in the BTB?",
+      "options": [
+        "Backward = taken; forward = not taken",
+        "Backward = not taken; forward = taken",
+        "All branches = taken",
+        "All branches = invalid"
+      ],
+      "expected_answer": "Backward = taken; forward = not taken",
+      "expected_source_page": 5,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB20",
+      "question": "What does the return address stack do on a call and return?",
+      "options": [
+        "Pushes the address on a call and pops it on a return",
+        "Flushes the whole data cache",
+        "Counts loop iterations",
+        "Stores arithmetic flags only"
+      ],
+      "expected_answer": "Pushes the address on a call and pops it on a return",
+      "expected_source_page": 5,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB21",
+      "question": "At approximately which stage does the PDF mark the branch check in the 20-stage pipeline?",
+      "options": [
+        "Stage 5",
+        "Stage 10",
+        "Stage 19",
+        "Stage 20 only"
+      ],
+      "expected_answer": "Stage 19",
+      "expected_source_page": 6,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB22",
+      "question": "How many stages does the PDF list for Pentium III (P6)?",
+      "options": [
+        "About 5",
+        "About 10",
+        "About 20",
+        "About 30"
+      ],
+      "expected_answer": "About 10",
+      "expected_source_page": 6,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB23",
+      "question": "What happens to wrong-path instructions after a misprediction?",
+      "options": [
+        "They are flushed/discarded",
+        "They are saved as correct results",
+        "They are moved to the BTB as instructions",
+        "They are sent to the printer"
+      ],
+      "expected_answer": "They are flushed/discarded",
+      "expected_source_page": 7,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB24",
+      "question": "After flushing wrong-path instructions, what happens next?",
+      "options": [
+        "Fetching restarts from the correct address",
+        "The computer permanently shuts down",
+        "The branch instruction is removed from the program",
+        "The CPU skips all future branches"
+      ],
+      "expected_answer": "Fetching restarts from the correct address",
+      "expected_source_page": 7,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB25",
+      "question": "What does the predictor update after a misprediction?",
+      "options": [
+        "BTB and branch history",
+        "Only the monitor settings",
+        "Only the keyboard buffer",
+        "The PDF page count"
+      ],
+      "expected_answer": "BTB and branch history",
+      "expected_source_page": 7,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB26",
+      "question": "How many states are illustrated by the 2-bit counter diagram?",
+      "options": [
+        "Two",
+        "Three",
+        "Four",
+        "Eight"
+      ],
+      "expected_answer": "Four",
+      "expected_source_page": 8,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB27",
+      "question": "In the 2-bit counter illustration, what happens when the branch is taken?",
+      "options": [
+        "The state moves right",
+        "The state moves left",
+        "The counter is always reset",
+        "The BTB is deleted"
+      ],
+      "expected_answer": "The state moves right",
+      "expected_source_page": 8,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB28",
+      "question": "Why does the PDF say a 2-bit counter suits loops?",
+      "options": [
+        "One loop exit can weaken the taken prediction without immediately reversing it",
+        "It predicts every branch as not taken",
+        "It removes all pipeline stages",
+        "It stores the full loop source code"
+      ],
+      "expected_answer": "One loop exit can weaken the taken prediction without immediately reversing it",
+      "expected_source_page": 8,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB29",
+      "question": "In the loop example, what happens on iterations 2–99?",
+      "options": [
+        "History predicts taken correctly",
+        "Every iteration is mispredicted",
+        "The loop is not fetched",
+        "The return address stack is emptied"
+      ],
+      "expected_answer": "History predicts taken correctly",
+      "expected_source_page": 9,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    },
+    {
+      "id": "SB30",
+      "question": "What performance formula is shown for extra CPI?",
+      "options": [
+        "Branch frequency × misprediction rate × penalty",
+        "Clock speed ÷ RAM size",
+        "Cache size × instruction length",
+        "Pipeline stages − branch frequency"
+      ],
+      "expected_answer": "Branch frequency × misprediction rate × penalty",
+      "expected_source_page": 9,
+      "expected_behavior": "Answer using the uploaded PDF and cite the listed page."
+    }
+  ],
+  "off_material_cases": [
+    {
+      "id": "OM01",
+      "question": "What is the capital city of Japan?",
+      "options": [
+        "Tokyo",
+        "Seoul",
+        "Beijing",
+        "Bangkok"
+      ],
+      "expected_answer_if_general_knowledge": "Tokyo",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    },
+    {
+      "id": "OM02",
+      "question": "What is the chemical symbol for gold?",
+      "options": [
+        "Ag",
+        "Au",
+        "Fe",
+        "Go"
+      ],
+      "expected_answer_if_general_knowledge": "Au",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    },
+    {
+      "id": "OM03",
+      "question": "Who wrote the play Romeo and Juliet?",
+      "options": [
+        "William Shakespeare",
+        "Charles Dickens",
+        "Jane Austen",
+        "Mark Twain"
+      ],
+      "expected_answer_if_general_knowledge": "William Shakespeare",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    },
+    {
+      "id": "OM04",
+      "question": "What is 12 × 8?",
+      "options": [
+        "84",
+        "96",
+        "108",
+        "88"
+      ],
+      "expected_answer_if_general_knowledge": "96",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    },
+    {
+      "id": "OM05",
+      "question": "Which planet is known as the Red Planet?",
+      "options": [
+        "Venus",
+        "Mars",
+        "Jupiter",
+        "Mercury"
+      ],
+      "expected_answer_if_general_knowledge": "Mars",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    },
+    {
+      "id": "OM06",
+      "question": "Which gas do plants mainly absorb for photosynthesis?",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "expected_answer_if_general_knowledge": "Carbon dioxide",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    },
+    {
+      "id": "OM07",
+      "question": "What is the largest ocean on Earth?",
+      "options": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Pacific Ocean"
+      ],
+      "expected_answer_if_general_knowledge": "Pacific Ocean",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    },
+    {
+      "id": "OM08",
+      "question": "What is the boiling point of pure water at standard atmospheric pressure?",
+      "options": [
+        "50°C",
+        "75°C",
+        "100°C",
+        "150°C"
+      ],
+      "expected_answer_if_general_knowledge": "100°C",
+      "expected_behavior": "In strict source-grounded mode, say the answer was not found in the uploaded PDF and do not answer from outside knowledge."
+    }
+  ]
+}
