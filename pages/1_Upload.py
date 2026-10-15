@@ -165,335 +165,335 @@ with tab_upload:
         if uploaded_file is None:
             st.warning("Please upload a file first.")
 
-    else:
-        file_name = uploaded_file.name
-        file_extension = Path(file_name).suffix.lower()
-        original_file_bytes = uploaded_file.getvalue()
-
-        extracted_text = ""
-        page_records = []
-        page_count = 0
-        status = "Extraction unavailable"
-
-        progress_bar = st.progress(0)
-        status_text = st.empty()
-
-        try:
-
-            # ------------------------------------------
-            # PDF extraction
-            # ------------------------------------------
-
-            if file_extension == ".pdf":
-
-                status_text.write("Opening PDF...")
-
-                pdf_reader = PdfReader(
-                    io.BytesIO(original_file_bytes)
-                )
-
-                page_count = len(pdf_reader.pages)
-                all_pages_text = []
-
-                for index, page in enumerate(pdf_reader.pages):
-
-                    page_number = index + 1
-
-                    status_text.write(
-                        f"Processing PDF page "
-                        f"{page_number} of {page_count}..."
-                    )
-
-                    page_text = page.extract_text() or ""
-
-                    page_records.append({
-                        "page_number": page_number,
-                        "text": page_text
-                    })
-
-                    all_pages_text.append(
-                        f"--- Page {page_number} ---\n{page_text}"
-                    )
-
-                    progress_bar.progress(
-                        int(page_number / max(page_count, 1) * 100)
-                    )
-
-                extracted_text = "\n\n".join(all_pages_text)
-
-                status = (
-                    "Extracted"
-                    if extracted_text.strip()
-                    else "No text found"
-                )
-
-            # ------------------------------------------
-            # TXT extraction
-            # ------------------------------------------
-
-            elif file_extension == ".txt":
-
-                status_text.write("Reading text file...")
-
-                extracted_text = original_file_bytes.decode(
-                    "utf-8",
-                    errors="replace"
-                )
-
-                page_records.append({
-                    "page_number": 1,
-                    "text": extracted_text
-                })
-
-                page_count = 1
-                progress_bar.progress(100)
-
-                status = (
-                    "Extracted"
-                    if extracted_text.strip()
-                    else "No text found"
-                )
-
-            # ------------------------------------------
-            # PPTX extraction
-            # ------------------------------------------
-
-            elif file_extension == ".pptx":
-
-                from pptx import Presentation
-
-                status_text.write("Opening PowerPoint presentation...")
-
-                presentation = Presentation(
-                    io.BytesIO(original_file_bytes)
-                )
-
-                page_count = len(presentation.slides)
-                all_slides_text = []
-
-                for index, slide in enumerate(presentation.slides):
-
-                    slide_number = index + 1
-                    slide_parts = []
-
-                    status_text.write(
-                        f"Processing slide {slide_number} "
-                        f"of {page_count}..."
-                    )
-
-                    for shape in slide.shapes:
-
-                        # Text boxes and ordinary text shapes
-                        if getattr(shape, "has_text_frame", False):
-                            shape_text = shape.text.strip()
-
-                            if shape_text:
-                                slide_parts.append(shape_text)
-
-                        # Tables inside slides
-                        if getattr(shape, "has_table", False):
-                            for row in shape.table.rows:
-                                cells = [
-                                    cell.text.strip()
-                                    for cell in row.cells
-                                ]
-
-                                if any(cells):
-                                    slide_parts.append(
-                                        " | ".join(cells)
-                                    )
-
-                    slide_text = "\n".join(slide_parts)
-
-                    page_records.append({
-                        "page_number": slide_number,
-                        "text": slide_text
-                    })
-
-                    all_slides_text.append(
-                        f"--- Page {slide_number} ---\n{slide_text}"
-                    )
-
-                    progress_bar.progress(
-                        int(slide_number / max(page_count, 1) * 100)
-                    )
-
-                extracted_text = "\n\n".join(all_slides_text)
-
-                status = (
-                    "Extracted"
-                    if extracted_text.strip()
-                    else "No text found"
-                )
-
-            # ------------------------------------------
-            # DOCX extraction
-            # ------------------------------------------
-
-            elif file_extension == ".docx":
-                if Document is None:
-                    st.error("python-docx is not installed in the environment.")
-                    status = "Failed: python-docx missing"
-                    extracted_text = ""
-                else:
-                    status_text.write("Reading Word document...")
-                    document = Document(
+        else:
+            file_name = uploaded_file.name
+            file_extension = Path(file_name).suffix.lower()
+            original_file_bytes = uploaded_file.getvalue()
+    
+            extracted_text = ""
+            page_records = []
+            page_count = 0
+            status = "Extraction unavailable"
+    
+            progress_bar = st.progress(0)
+            status_text = st.empty()
+    
+            try:
+    
+                # ------------------------------------------
+                # PDF extraction
+                # ------------------------------------------
+    
+                if file_extension == ".pdf":
+    
+                    status_text.write("Opening PDF...")
+    
+                    pdf_reader = PdfReader(
                         io.BytesIO(original_file_bytes)
                     )
-
-                text_parts = []
-
-                total_items = (
-                    len(document.paragraphs)
-                    + len(document.tables)
-                )
-
-                total_items = max(total_items, 1)
-                processed_items = 0
-
-                # Extract paragraphs
-                for paragraph in document.paragraphs:
-
-                    paragraph_text = paragraph.text.strip()
-
-                    if paragraph_text:
-                        text_parts.append(paragraph_text)
-
-                    processed_items += 1
-
-                    progress_bar.progress(
-                        min(
-                            int(processed_items / total_items * 100),
-                            100
+    
+                    page_count = len(pdf_reader.pages)
+                    all_pages_text = []
+    
+                    for index, page in enumerate(pdf_reader.pages):
+    
+                        page_number = index + 1
+    
+                        status_text.write(
+                            f"Processing PDF page "
+                            f"{page_number} of {page_count}..."
                         )
-                    )
-
-                    status_text.write(
-                        f"Processing Word content "
-                        f"{processed_items} of {total_items}..."
-                    )
-
-                # Extract tables
-                for table in document.tables:
-
-                    for row in table.rows:
-                        cells = [
-                            cell.text.strip()
-                            for cell in row.cells
-                        ]
-
-                        if any(cells):
-                            text_parts.append(" | ".join(cells))
-
-                    processed_items += 1
-
-                    progress_bar.progress(
-                        min(
-                            int(processed_items / total_items * 100),
-                            100
+    
+                        page_text = page.extract_text() or ""
+    
+                        page_records.append({
+                            "page_number": page_number,
+                            "text": page_text
+                        })
+    
+                        all_pages_text.append(
+                            f"--- Page {page_number} ---\n{page_text}"
                         )
+    
+                        progress_bar.progress(
+                            int(page_number / max(page_count, 1) * 100)
+                        )
+    
+                    extracted_text = "\n\n".join(all_pages_text)
+    
+                    status = (
+                        "Extracted"
+                        if extracted_text.strip()
+                        else "No text found"
                     )
-
-                extracted_text = "\n".join(text_parts)
-
-                # DOCX does not provide reliable page boundaries
-                # through python-docx, so save the text as one section.
-                page_records.append({
-                    "page_number": 1,
-                    "text": extracted_text
-                })
-
-                page_count = 1
-
-                status = (
-                    "Extracted"
-                    if extracted_text.strip()
-                    else "No text found"
+    
+                # ------------------------------------------
+                # TXT extraction
+                # ------------------------------------------
+    
+                elif file_extension == ".txt":
+    
+                    status_text.write("Reading text file...")
+    
+                    extracted_text = original_file_bytes.decode(
+                        "utf-8",
+                        errors="replace"
+                    )
+    
+                    page_records.append({
+                        "page_number": 1,
+                        "text": extracted_text
+                    })
+    
+                    page_count = 1
+                    progress_bar.progress(100)
+    
+                    status = (
+                        "Extracted"
+                        if extracted_text.strip()
+                        else "No text found"
+                    )
+    
+                # ------------------------------------------
+                # PPTX extraction
+                # ------------------------------------------
+    
+                elif file_extension == ".pptx":
+    
+                    from pptx import Presentation
+    
+                    status_text.write("Opening PowerPoint presentation...")
+    
+                    presentation = Presentation(
+                        io.BytesIO(original_file_bytes)
+                    )
+    
+                    page_count = len(presentation.slides)
+                    all_slides_text = []
+    
+                    for index, slide in enumerate(presentation.slides):
+    
+                        slide_number = index + 1
+                        slide_parts = []
+    
+                        status_text.write(
+                            f"Processing slide {slide_number} "
+                            f"of {page_count}..."
+                        )
+    
+                        for shape in slide.shapes:
+    
+                            # Text boxes and ordinary text shapes
+                            if getattr(shape, "has_text_frame", False):
+                                shape_text = shape.text.strip()
+    
+                                if shape_text:
+                                    slide_parts.append(shape_text)
+    
+                            # Tables inside slides
+                            if getattr(shape, "has_table", False):
+                                for row in shape.table.rows:
+                                    cells = [
+                                        cell.text.strip()
+                                        for cell in row.cells
+                                    ]
+    
+                                    if any(cells):
+                                        slide_parts.append(
+                                            " | ".join(cells)
+                                        )
+    
+                        slide_text = "\n".join(slide_parts)
+    
+                        page_records.append({
+                            "page_number": slide_number,
+                            "text": slide_text
+                        })
+    
+                        all_slides_text.append(
+                            f"--- Page {slide_number} ---\n{slide_text}"
+                        )
+    
+                        progress_bar.progress(
+                            int(slide_number / max(page_count, 1) * 100)
+                        )
+    
+                    extracted_text = "\n\n".join(all_slides_text)
+    
+                    status = (
+                        "Extracted"
+                        if extracted_text.strip()
+                        else "No text found"
+                    )
+    
+                # ------------------------------------------
+                # DOCX extraction
+                # ------------------------------------------
+    
+                elif file_extension == ".docx":
+                    if Document is None:
+                        st.error("python-docx is not installed in the environment.")
+                        status = "Failed: python-docx missing"
+                        extracted_text = ""
+                    else:
+                        status_text.write("Reading Word document...")
+                        document = Document(
+                            io.BytesIO(original_file_bytes)
+                        )
+    
+                    text_parts = []
+    
+                    total_items = (
+                        len(document.paragraphs)
+                        + len(document.tables)
+                    )
+    
+                    total_items = max(total_items, 1)
+                    processed_items = 0
+    
+                    # Extract paragraphs
+                    for paragraph in document.paragraphs:
+    
+                        paragraph_text = paragraph.text.strip()
+    
+                        if paragraph_text:
+                            text_parts.append(paragraph_text)
+    
+                        processed_items += 1
+    
+                        progress_bar.progress(
+                            min(
+                                int(processed_items / total_items * 100),
+                                100
+                            )
+                        )
+    
+                        status_text.write(
+                            f"Processing Word content "
+                            f"{processed_items} of {total_items}..."
+                        )
+    
+                    # Extract tables
+                    for table in document.tables:
+    
+                        for row in table.rows:
+                            cells = [
+                                cell.text.strip()
+                                for cell in row.cells
+                            ]
+    
+                            if any(cells):
+                                text_parts.append(" | ".join(cells))
+    
+                        processed_items += 1
+    
+                        progress_bar.progress(
+                            min(
+                                int(processed_items / total_items * 100),
+                                100
+                            )
+                        )
+    
+                    extracted_text = "\n".join(text_parts)
+    
+                    # DOCX does not provide reliable page boundaries
+                    # through python-docx, so save the text as one section.
+                    page_records.append({
+                        "page_number": 1,
+                        "text": extracted_text
+                    })
+    
+                    page_count = 1
+    
+                    status = (
+                        "Extracted"
+                        if extracted_text.strip()
+                        else "No text found"
+                    )
+    
+                # ------------------------------------------
+                # Old PPT format
+                # ------------------------------------------
+    
+                elif file_extension == ".ppt":
+    
+                    status = "Convert PPT to PPTX"
+    
+                    st.warning(
+                        "This is an older .ppt file. "
+                        "Open it in PowerPoint and use Save As → "
+                        "PowerPoint Presentation (.pptx), then upload it again."
+                    )
+    
+                # ------------------------------------------
+                # Save file details
+                # ------------------------------------------
+    
+                new_doc = {
+                    "id": (
+                        f"doc_{datetime.now().strftime('%Y%m%d%H%M%S%f')}"
+                    ),
+                    "name": file_name,
+                    "size_kb": round(
+                        len(original_file_bytes) / 1024, 2
+                    ),
+                    "upload_time": datetime.now().strftime(
+                        "%d-%m-%Y %H:%M"
+                    ),
+                    "topic": selected_topic,
+                    "tag": selected_tag.strip() or "General",
+                    "page_count": page_count,
+                    "extracted_text": extracted_text,
+                    "page_records": page_records,
+    
+                    # Keep original bytes for supported source viewing
+                    "file_bytes": (
+                        original_file_bytes
+                        if file_extension in [".pdf", ".pptx", ".docx", ".txt"]
+                        else None
+                    ),
+    
+                    "status": status
+                }
+    
+                # Avoid adding an unsupported PPT file as a processed document
+                if file_extension != ".ppt":
+                    st.session_state["uploaded_materials"].append(new_doc)
+    
+                progress_bar.progress(100)
+                status_text.empty()
+    
+                if status == "Extracted":
+                    st.success(
+                        f"✅ {file_name} processed successfully!"
+                    )
+    
+                elif status == "No text found":
+                    st.warning(
+                        "The file was added, but no readable text "
+                        "was extracted. Scanned PDFs and image-only "
+                        "slides may need OCR."
+                    )
+    
+                elif status == "Convert PPT to PPTX":
+                    st.info("Convert the file to PPTX and upload it again.")
+    
+                st.rerun()
+    
+            except ImportError as error:
+                progress_bar.empty()
+                status_text.empty()
+    
+                st.error(
+                    "A required library is missing. Install the libraries "
+                    "using the commands shown below, then restart Streamlit."
                 )
-
-            # ------------------------------------------
-            # Old PPT format
-            # ------------------------------------------
-
-            elif file_extension == ".ppt":
-
-                status = "Convert PPT to PPTX"
-
-                st.warning(
-                    "This is an older .ppt file. "
-                    "Open it in PowerPoint and use Save As → "
-                    "PowerPoint Presentation (.pptx), then upload it again."
-                )
-
-            # ------------------------------------------
-            # Save file details
-            # ------------------------------------------
-
-            new_doc = {
-                "id": (
-                    f"doc_{datetime.now().strftime('%Y%m%d%H%M%S%f')}"
-                ),
-                "name": file_name,
-                "size_kb": round(
-                    len(original_file_bytes) / 1024, 2
-                ),
-                "upload_time": datetime.now().strftime(
-                    "%d-%m-%Y %H:%M"
-                ),
-                "topic": selected_topic,
-                "tag": selected_tag.strip() or "General",
-                "page_count": page_count,
-                "extracted_text": extracted_text,
-                "page_records": page_records,
-
-                # Keep original bytes for supported source viewing
-                "file_bytes": (
-                    original_file_bytes
-                    if file_extension in [".pdf", ".pptx", ".docx", ".txt"]
-                    else None
-                ),
-
-                "status": status
-            }
-
-            # Avoid adding an unsupported PPT file as a processed document
-            if file_extension != ".ppt":
-                st.session_state["uploaded_materials"].append(new_doc)
-
-            progress_bar.progress(100)
-            status_text.empty()
-
-            if status == "Extracted":
-                st.success(
-                    f"✅ {file_name} processed successfully!"
-                )
-
-            elif status == "No text found":
-                st.warning(
-                    "The file was added, but no readable text "
-                    "was extracted. Scanned PDFs and image-only "
-                    "slides may need OCR."
-                )
-
-            elif status == "Convert PPT to PPTX":
-                st.info("Convert the file to PPTX and upload it again.")
-
-            st.rerun()
-
-        except ImportError as error:
-            progress_bar.empty()
-            status_text.empty()
-
-            st.error(
-                "A required library is missing. Install the libraries "
-                "using the commands shown below, then restart Streamlit."
-            )
-
-        except Exception as error:
-            progress_bar.empty()
-            status_text.empty()
-
-            st.error(f"File processing failed: {error}")
+    
+            except Exception as error:
+                progress_bar.empty()
+                status_text.empty()
+    
+                st.error(f"File processing failed: {error}")
 
 
 with tab_youtube:
