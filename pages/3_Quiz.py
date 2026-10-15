@@ -13,7 +13,7 @@ from study_data import init_session_state, AVAILABLE_TOPICS, QUESTION_BANK
 from gemini_helper import generate_quiz_questions
 
 try:
-    from retrieval_engine import get_all_topics, get_chunks_for_topic
+    from retrieval_engine import get_all_topics, get_chunks_for_topic, retrieve_chunks
     from learner_loop import load_state, save_state, record_answer, get_mastery, difficulty_for
     from question_generator import generate_questions
     from question_verifier import verify_question
@@ -149,9 +149,11 @@ if st.button("🚀 Generate Adaptive Quiz", type="primary"):
         if HAS_MEMBER_B:
             try:
                 chunks = get_chunks_for_topic(selected_topic_id, limit=3)
+                if not chunks:
+                    chunks = retrieve_chunks(selected_topic_name, match_count=3, threshold=0.1)
                 context_chunks = [c.get("text", "") for c in chunks if c.get("text")]
-            except Exception:
-                pass
+            except Exception as e:
+                print("Error retrieving chunks for quiz:", e)
 
         # 2. Or from session uploaded materials
         if not context_chunks:
@@ -210,7 +212,7 @@ if st.button("🚀 Generate Adaptive Quiz", type="primary"):
         st.session_state["quiz_difficulty"] = selected_diff
         st.session_state["quiz_submitted"] = False
         st.session_state["quiz_answers"] = {}
-        st.session_state["bkt_results"] = []
+        st.session_state["quiz_results_data"] = None
 
         if used_fallback:
             st.warning("Generated from fallback practice material.")
@@ -223,8 +225,8 @@ questions = st.session_state.get("quiz_questions", [])
 
 if questions:
     st.divider()
-    st.subheader(f"Quiz: {st.session_state['quiz_topic']}")
-    st.caption(f"Difficulty: {st.session_state['quiz_difficulty']} • Total Questions: {len(questions)}")
+    st.subheader(f"Quiz: {st.session_state.get('quiz_topic', selected_topic_name)}")
+    st.caption(f"Difficulty: {st.session_state.get('quiz_difficulty', selected_diff)} • Total Questions: {len(questions)}")
 
     with st.form("quiz_form"):
         user_answers = {}
@@ -243,31 +245,23 @@ if questions:
 
     if submitted:
         st.session_state["quiz_answers"] = user_answers
-        st.session_state["quiz_submitted"] = True
-
-    if st.session_state.get("quiz_submitted"):
-        answers = st.session_state.get("quiz_answers", {})
         score = 0
         total = len(questions)
-        bkt_updates = []
         weak_concepts = []
-
-        st.divider()
-        st.header("📊 Results & Cognitive Knowledge Tracing")
+        detailed_results = []
 
         for index, question in enumerate(questions):
             correct_answer = question.get("answer", "")
-            user_answer = answers.get(index)
+            user_answer = user_answers.get(index)
             is_correct = bool(
                 user_answer and str(user_answer).strip().casefold() == str(correct_answer).strip().casefold()
             )
-
             if is_correct:
                 score += 1
             else:
                 weak_concepts.append(st.session_state.get("quiz_topic", "Concept"))
 
-            # Update BKT Learner Model
+            bkt_info = None
             if HAS_MEMBER_B:
                 bkt_res = record_answer(
                     state=learner_state,
@@ -281,33 +275,22 @@ if questions:
                     selected=user_answer or "",
                     correct=is_correct
                 )
-                bkt_updates.append(bkt_res)
+                bkt_info = bkt_res
 
-            st.markdown(f"**Question {index + 1}**")
-            st.write(question.get("question"))
-            if is_correct:
-                st.success(f"✅ Correct! You selected: {user_answer}")
-            else:
-                st.error(f"❌ Incorrect. Your choice: {user_answer or 'No answer'}")
-                st.info(f"Correct answer: **{correct_answer}**")
+            detailed_results.append({
+                "question": question.get("question"),
+                "options": question.get("options", []),
+                "user_answer": user_answer,
+                "correct_answer": correct_answer,
+                "is_correct": is_correct,
+                "explanation": question.get("explanation", ""),
+                "bkt_info": bkt_info
+            })
 
-            if question.get("explanation"):
-                st.caption(f"💡 **Explanation:** {question.get('explanation')}")
-
-            if HAS_MEMBER_B and bkt_updates:
-                u = bkt_updates[-1]
-                gain = u['mastery_after'] - u['mastery_before']
-                st.caption(f"📈 **BKT Mastery Update:** {u['mastery_before']*100:.1f}% ➔ **{u['mastery_after']*100:.1f}%** ({gain*100:+.1f}%)")
-
-            st.divider()
-
-        # Save updated learner state
         if HAS_MEMBER_B:
             save_state(learner_state)
 
         percentage = (score / total * 100) if total else 0
-
-        # Log into session quiz history for dashboard
         if "quiz_history" not in st.session_state:
             st.session_state["quiz_history"] = []
 
@@ -321,16 +304,53 @@ if questions:
             "weak_concepts": list(set(weak_concepts))
         })
 
+        st.session_state["quiz_results_data"] = {
+            "score": score,
+            "total": total,
+            "percentage": percentage,
+            "detailed_results": detailed_results,
+            "topic_mastery": get_mastery(learner_state, selected_topic_id) if HAS_MEMBER_B else percentage / 100
+        }
+        st.session_state["quiz_submitted"] = True
+
+    if st.session_state.get("quiz_submitted") and st.session_state.get("quiz_results_data"):
+        res = st.session_state["quiz_results_data"]
+        score = res["score"]
+        total = res["total"]
+        percentage = res["percentage"]
+
+        st.divider()
+        st.header("📊 Results & Cognitive Knowledge Tracing")
+
+        for index, item in enumerate(res["detailed_results"]):
+            st.markdown(f"**Question {index + 1}**")
+            st.write(item["question"])
+            if item["is_correct"]:
+                st.success(f"✅ Correct! You selected: {item['user_answer']}")
+            else:
+                st.error(f"❌ Incorrect. Your choice: {item['user_answer'] or 'No answer'}")
+                st.info(f"Correct answer: **{item['correct_answer']}**")
+
+            if item.get("explanation"):
+                st.caption(f"💡 **Explanation:** {item['explanation']}")
+
+            if item.get("bkt_info"):
+                u = item["bkt_info"]
+                gain = u['mastery_after'] - u['mastery_before']
+                st.caption(f"📈 **BKT Mastery Update:** {u['mastery_before']*100:.1f}% ➔ **{u['mastery_after']*100:.1f}%** ({gain*100:+.1f}%)")
+
+            st.divider()
+
         st.subheader("🏆 Assessment Score")
         col1, col2, col3 = st.columns(3)
         col1.metric("Score", f"{score} / {total}")
         col2.metric("Accuracy", f"{percentage:.1f}%")
-        final_topic_mastery = get_mastery(learner_state, selected_topic_id) if HAS_MEMBER_B else percentage / 100
-        col3.metric("Topic Mastery (BKT)", f"{final_topic_mastery*100:.1f}%")
+        col3.metric("Topic Mastery (BKT)", f"{res['topic_mastery']*100:.1f}%")
 
         st.progress(percentage / 100)
 
         if st.button("🔄 Take Another Quiz"):
             st.session_state["quiz_submitted"] = False
             st.session_state["quiz_answers"] = {}
+            st.session_state["quiz_results_data"] = None
             st.rerun()

@@ -23,7 +23,7 @@ if not API_KEY:
 
 client = genai.Client(
     api_key=API_KEY,
-    http_options=types.HttpOptions(timeout=30.0)
+    http_options=types.HttpOptions(timeout=60000)
 )
 MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-lite-latest")
 PROMPT_PATH = Path(__file__).parent / "question_generation_prompt.txt"

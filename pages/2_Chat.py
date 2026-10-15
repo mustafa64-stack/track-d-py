@@ -96,27 +96,48 @@ def find_relevant_context(question, documents):
     stop_words = {
         "what", "is", "are", "the", "a", "an", "in", "on", "of", "to", "for",
         "and", "explain", "tell", "me", "about", "how", "why", "does", "do",
-        "can", "you", "please", "define", "difference", "between"
+        "can", "you", "please", "define", "difference", "between", "whats", "what's"
     }
-    question_words = set(re.findall(r"\b[a-zA-Z0-9]+\b", question.lower())) - stop_words
+    raw_words = re.findall(r"\b[a-zA-Z0-9]+\b", question.lower())
+    question_words = [w for w in raw_words if w not in stop_words]
     matches = []
 
     for doc in documents:
-        for record in get_page_records(doc):
-            page_text = record["text"]
-            page_words = set(re.findall(r"\b[a-zA-Z0-9]+\b", page_text.lower()))
-            score = len(question_words.intersection(page_words))
+        doc_text = doc.get("extracted_text", "")
+        if not doc_text:
+            continue
+
+        records = get_page_records(doc)
+        if not records:
+            records = [{"page": 1, "text": doc_text}]
+
+        for record in records:
+            page_text = record.get("text", "")
+            if not page_text or len(page_text.strip()) < 10:
+                continue
+            p_lower = page_text.lower()
+            score = 0
+            for w in question_words:
+                if w in p_lower:
+                    score += 3
+                elif len(w) >= 4:
+                    stem = w[:3]
+                    for dw in re.findall(r"\b[a-zA-Z0-9]+\b", p_lower):
+                        if len(dw) >= 4 and dw[:3] == stem:
+                            score += 2
+                            break
+
             if score > 0:
                 matches.append({
                     "score": score,
                     "text": page_text,
                     "document": doc.get("name", "Uploaded document"),
                     "document_id": doc.get("id"),
-                    "page": record["page"]
+                    "page": record.get("page", 1)
                 })
 
     matches.sort(key=lambda item: item["score"], reverse=True)
-    return matches[:3]
+    return matches[:4]
 
 
 # --------------------------------------------------

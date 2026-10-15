@@ -20,7 +20,7 @@ load_dotenv()
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 client = genai.Client(
     api_key=GEMINI_API_KEY,
-    http_options=types.HttpOptions(timeout=30.0)
+    http_options=types.HttpOptions(timeout=60000)
 )
 
 
