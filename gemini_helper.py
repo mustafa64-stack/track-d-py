@@ -1,5 +1,20 @@
 import os
 import json
+import socket
+
+# Ensure reliable IPv4 network resolution on Linux environments where IPv6 is unrouted
+def _patch_ipv4():
+    try:
+        orig = socket.getaddrinfo
+        def _getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+            if family == 0:
+                family = socket.AF_INET
+            return orig(host, port, family, type, proto, flags)
+        socket.getaddrinfo = _getaddrinfo
+    except Exception:
+        pass
+
+_patch_ipv4()
 
 from dotenv import load_dotenv
 from google import genai
@@ -9,8 +24,8 @@ load_dotenv()
 
 API_KEY = os.getenv("GEMINI_API_KEY")
 
-# Use the reliable Flash model
-MODEL_NAME = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-latest")
+# Use the fast, highly-available Flash Lite model by default
+MODEL_NAME = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-lite-latest")
 
 
 # --------------------------------------------------
@@ -24,12 +39,12 @@ def get_gemini_client():
 
     if not api_key:
         raise ValueError(
-            "GEMINI_API_KEY nahi mili. Project ki .env file check karo."
+            "GEMINI_API_KEY is not set. Please check your .env file."
         )
 
     return genai.Client(
         api_key=api_key,
-        http_options=types.HttpOptions(timeout=30000)
+        http_options=types.HttpOptions(timeout=30.0)
     )
 
 
@@ -41,42 +56,41 @@ def generate_with_retry(
     client,
     prompt,
     json_response=False,
-    max_attempts=1
+    max_attempts=2
 ):
-    """Generate a response and provide a readable error if it fails."""
+    """Generate a response with model fallbacks and clear error reporting."""
+
+    candidate_models = [MODEL_NAME]
+    for alt in ["gemini-flash-lite-latest", "gemini-flash-latest"]:
+        if alt not in candidate_models:
+            candidate_models.append(alt)
+
+    config = None
+    if json_response:
+        config = types.GenerateContentConfig(
+            response_mime_type="application/json"
+        )
 
     last_error = None
-
-    for _ in range(max(1, int(max_attempts))):
-        try:
-            config = None
-
-            if json_response:
-                config = types.GenerateContentConfig(
-                    response_mime_type="application/json"
+    for model_to_use in candidate_models:
+        for _ in range(max_attempts):
+            try:
+                response = client.models.generate_content(
+                    model=model_to_use,
+                    contents=prompt,
+                    config=config
                 )
-
-            response = client.models.generate_content(
-                model=MODEL_NAME,
-                contents=prompt,
-                config=config
-            )
-
-            response_text = response.text
-
-            if not response_text or not response_text.strip():
-                raise ValueError("Gemini ne empty response diya.")
-
-            return response_text.strip()
-
-        except Exception as error:
-            last_error = error
-            print("GEMINI ERROR:", repr(error))
+                response_text = response.text
+                if response_text and response_text.strip():
+                    return response_text.strip()
+            except Exception as error:
+                last_error = error
+                print(f"Gemini call to {model_to_use} failed: {error}")
+                break  # try next model on error
 
     raise RuntimeError(
-        "Gemini response generate nahi ho saka. "
-        "API key, model availability, internet aur API quota check karo. "
-        f"Actual error: {type(last_error).__name__}: {last_error}"
+        "Could not generate Gemini response across available models. "
+        f"Last error: {type(last_error).__name__}: {last_error}"
     ) from last_error
 
 

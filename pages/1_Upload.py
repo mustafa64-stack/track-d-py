@@ -4,7 +4,10 @@ import io
 from pathlib import Path
 from datetime import datetime
 from pptx import Presentation
-from docx import Document
+try:
+    from docx import Document
+except ImportError:
+    Document = None
 
 import streamlit as st
 from pypdf import PdfReader
@@ -307,14 +310,15 @@ if st.button(
             # ------------------------------------------
 
             elif file_extension == ".docx":
-
-                from docx import Document
-
-                status_text.write("Reading Word document...")
-
-                document = Document(
-                    io.BytesIO(original_file_bytes)
-                )
+                if Document is None:
+                    st.error("python-docx is not installed in the environment.")
+                    status = "Failed: python-docx missing"
+                    extracted_text = ""
+                else:
+                    status_text.write("Reading Word document...")
+                    document = Document(
+                        io.BytesIO(original_file_bytes)
+                    )
 
                 text_parts = []
 

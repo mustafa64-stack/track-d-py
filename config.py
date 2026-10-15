@@ -1,5 +1,20 @@
 import os
+import socket
 from dotenv import load_dotenv
+
+# Ensure reliable IPv4 network resolution on Linux environments where IPv6 is unrouted
+def _patch_ipv4():
+    try:
+        orig = socket.getaddrinfo
+        def _getaddrinfo(host, port, family=0, type=0, proto=0, flags=0):
+            if family == 0:
+                family = socket.AF_INET
+            return orig(host, port, family, type, proto, flags)
+        socket.getaddrinfo = _getaddrinfo
+    except Exception:
+        pass
+
+_patch_ipv4()
 
 load_dotenv()
 
@@ -11,7 +26,7 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY", "")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
 # Flash model for fast multimodal inference
-GEMINI_FLASH_MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-latest")
+GEMINI_FLASH_MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-lite-latest")
 GEMINI_EMBEDDING_MODEL = "gemini-embedding-001"
 EMBEDDING_DIM = 1000
 

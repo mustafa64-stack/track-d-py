@@ -237,8 +237,24 @@ for index, (question, note) in enumerate(quick_questions):
 
 
 # --------------------------------------------------
-# 8. CHAT HISTORY
 # --------------------------------------------------
+# 8. CHAT CONTROLS & HISTORY
+# --------------------------------------------------
+
+with st.sidebar:
+    st.markdown("### 🛠️ Chat Controls")
+    if st.button("🗑️ Clear Chat History", use_container_width=True):
+        st.session_state["chat_messages"] = []
+        st.session_state["selected_source"] = None
+        st.rerun()
+
+# Filter out empty or broken messages from past session
+valid_messages = []
+for m in st.session_state.get("chat_messages", []):
+    content = m.get("content", "").strip()
+    if content and content != "?":
+        valid_messages.append(m)
+st.session_state["chat_messages"] = valid_messages
 
 for message_index, message in enumerate(st.session_state["chat_messages"]):
     display_message(message, message_index)
@@ -253,7 +269,9 @@ prompt = st.chat_input("Ask a question from your course materials...")
 if st.session_state.get("pending_question"):
     prompt = st.session_state.pop("pending_question")
 
-if prompt:
+if prompt and str(prompt).strip():
+    prompt = str(prompt).strip()
+
     st.session_state["chat_messages"].append({
         "role": "user",
         "content": prompt,
@@ -263,51 +281,66 @@ if prompt:
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with st.spinner("🤖 Searching multimodal course materials in Supabase & synthesizing cited answer..."):
-        answer = ""
-        citations = []
-
-        # 1. Primary: Use Member A's Supabase Vector Search & Grounded Tutor Engine
-        if HAS_RETRIEVAL_ENGINE:
-            try:
-                # Format recent chat history
-                history = [
-                    {"role": m["role"], "text": m["content"]}
-                    for m in st.session_state["chat_messages"][-4:]
-                ]
-                ans, cits, _ = ask_tutor(user_question=prompt, chat_history=history)
-                answer = ans
-                citations = cits
-            except Exception as e:
-                print("Retrieval engine error:", e)
-
-        # 2. Fallback: Use in-session uploaded documents if retrieval engine didn't match
-        if (not answer or "cannot answer this" in answer.lower()) and st.session_state.get("uploaded_materials"):
-            uploaded_docs = st.session_state.get("uploaded_materials", [])
-            matches = find_relevant_context(prompt, uploaded_docs)
-            if matches:
-                context_parts = [f"Source: {m['document']}\nPage: {m['page']}\nText:\n{m['text'][:3000]}" for m in matches]
-                study_material = "\n\n---\n\n".join(context_parts)
-                try:
-                    fallback_answer = generate_tutor_answer(question=prompt, study_material=study_material)
-                    if fallback_answer and "not found" not in fallback_answer.lower():
-                        answer = fallback_answer
-                        citations = [
-                            {
-                                "label": f"{m['document']} (Page {m['page']})",
-                                "document": m["document"],
-                                "document_id": m["document_id"],
-                                "page": m["page"],
-                                "snippet": m["text"][:150] + "..."
-                            }
-                            for m in matches
-                        ]
-                except Exception as fb_err:
-                    print("Fallback answer error:", fb_err)
-
-        if not answer:
-            answer = "I cannot answer this. This concept is not covered in your uploaded course materials."
+    with st.chat_message("assistant"):
+        with st.spinner("🤖 Searching multimodal course materials in Supabase & synthesizing cited answer..."):
+            answer = ""
             citations = []
+
+            # 1. Primary: Use Member A's Supabase Vector Search & Grounded Tutor Engine
+            if HAS_RETRIEVAL_ENGINE:
+                try:
+                    # Pass previous conversation context (excluding the new prompt)
+                    prev_turns = [
+                        {"role": m["role"], "text": m["content"]}
+                        for m in st.session_state["chat_messages"][:-1][-4:]
+                    ]
+                    ans, cits, _ = ask_tutor(user_question=prompt, chat_history=prev_turns)
+                    if ans and not ans.startswith("Error generating answer"):
+                        answer = ans
+                        citations = cits
+                except Exception as e:
+                    print("Retrieval engine error:", e)
+
+            # 2. Fallback: Use in-session uploaded documents if retrieval engine didn't match
+            if (not answer or "cannot answer this" in answer.lower()) and st.session_state.get("uploaded_materials"):
+                uploaded_docs = st.session_state.get("uploaded_materials", [])
+                matches = find_relevant_context(prompt, uploaded_docs)
+                if matches:
+                    context_parts = [f"Source: {m['document']}\nPage: {m['page']}\nText:\n{m['text'][:3000]}" for m in matches]
+                    study_material = "\n\n---\n\n".join(context_parts)
+                    try:
+                        fallback_answer = generate_tutor_answer(question=prompt, study_material=study_material)
+                        if fallback_answer and "not found" not in fallback_answer.lower():
+                            answer = fallback_answer
+                            citations = [
+                                {
+                                    "label": f"{m['document']} (Page {m['page']})",
+                                    "document": m["document"],
+                                    "document_id": m["document_id"],
+                                    "page": m["page"],
+                                    "snippet": m["text"][:150] + "..."
+                                }
+                                for m in matches
+                            ]
+                    except Exception as fb_err:
+                        print("Fallback answer error:", fb_err)
+
+            if not answer:
+                answer = "I cannot answer this. This concept is not covered in your uploaded course materials."
+                citations = []
+
+            st.markdown(answer)
+
+            if citations:
+                st.markdown("**Cited Sources (Click to verify):**")
+                cols = st.columns(min(len(citations), 4))
+                for index, citation in enumerate(citations):
+                    col = cols[index % len(cols)]
+                    label = citation.get("label") or f"📄 {citation.get('document', 'Doc')}"
+                    with col:
+                        if st.button(f"🔍 {label}", key=f"source_curr_{index}", use_container_width=True):
+                            st.session_state["selected_source"] = citation
+                            st.rerun()
 
     st.session_state["chat_messages"].append({
         "role": "assistant",
@@ -315,7 +348,6 @@ if prompt:
         "citations": citations
     })
 
-    st.rerun()
 
 
 # --------------------------------------------------

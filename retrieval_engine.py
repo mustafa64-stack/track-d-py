@@ -18,7 +18,10 @@ from config import (
 
 load_dotenv()
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-client = genai.Client(api_key=GEMINI_API_KEY)
+client = genai.Client(
+    api_key=GEMINI_API_KEY,
+    http_options=types.HttpOptions(timeout=30.0)
+)
 
 
 def seconds_to_str(seconds: float) -> str:
@@ -212,23 +215,29 @@ Question: {user_question}
 
 Grounded Explanation:"""
 
-    try:
-        response = client.models.generate_content(
-            model=GEMINI_FLASH_MODEL,
-            contents=prompt
-        )
-        answer = response.text.strip()
-    except Exception as err:
+    candidate_models = [GEMINI_FLASH_MODEL]
+    for alt in ["gemini-flash-lite-latest", "gemini-flash-latest"]:
+        if alt not in candidate_models:
+            candidate_models.append(alt)
+
+    answer = None
+    last_err = None
+    for m in candidate_models:
         try:
-            fallback_model = "gemini-flash-lite-latest" if GEMINI_FLASH_MODEL == "gemini-flash-latest" else "gemini-flash-latest"
             response = client.models.generate_content(
-                model=fallback_model,
+                model=m,
                 contents=prompt
             )
-            answer = response.text.strip()
-        except Exception as fallback_err:
-            answer = f"Error generating answer: {fallback_err}"
-            return answer, [], matches
+            if response.text and response.text.strip():
+                answer = response.text.strip()
+                break
+        except Exception as err:
+            last_err = err
+            continue
+
+    if not answer:
+        answer = f"Error generating answer: {last_err}"
+        return answer, [], matches
 
     # If tutor refused because the topic is not covered, clear citations
     if "cannot answer this" in answer.lower():

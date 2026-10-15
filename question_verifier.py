@@ -11,6 +11,8 @@ from google.genai import errors
 
 load_dotenv()
 
+from google.genai import types
+
 API_KEY = os.getenv("GEMINI_API_KEY")
 
 if not API_KEY:
@@ -18,9 +20,12 @@ if not API_KEY:
         "GEMINI_API_KEY was not found. Check your .env file."
     )
 
-client = genai.Client(api_key=API_KEY)
+client = genai.Client(
+    api_key=API_KEY,
+    http_options=types.HttpOptions(timeout=30.0)
+)
 
-MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-latest")
+MODEL = os.getenv("GEMINI_FLASH_MODEL", "gemini-flash-lite-latest")
 
 PROMPT_PATH = (
     Path(__file__).parent / "question_verification_prompt.txt"
